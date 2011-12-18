@@ -134,7 +134,7 @@ sub determine_cache_key {
     die "No controller specified for cache key determination!\n"
         unless defined $controller
     ;
-    
+
     %opt = %$params;
     $opt{controller}
         = UNIVERSAL::can($controller, 'registered_name')
@@ -182,7 +182,7 @@ sub get_cache {
     my $self = shift;
     my %opt = @_;
     my $cache = $self->resolve_cache_handler( delete $opt{cache_handler} );
-    
+
     my $cache_sub = $cache->can('get');
     unless ($cache_sub) {
         my $class = blessed($cache) || $cache;
@@ -191,7 +191,7 @@ sub get_cache {
 
     my $key = $self->determine_cache_key( %opt );
     return if ! defined $key;
-    
+
     return $cache->$cache_sub(
         key => $key,
     );
@@ -235,7 +235,7 @@ sub set_cache {
 
     my $key = $self->determine_cache_key( %opt );
     return if ! defined $key;
-    
+
     return $cache->set(
         key     => $key,
         data    => delete $opt{data},
@@ -289,6 +289,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

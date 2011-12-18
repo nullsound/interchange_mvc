@@ -48,13 +48,13 @@ YUI.add('rowexpansion', function(Y) {
         YAHOO.widget.RowExpansionDataTable = function(elContainer,aColumnDefs,oDataSource,oConfigs) {
             oConfigs = oConfigs || {};
 
-            YAHOO.widget.RowExpansionDataTable.superclass.constructor.call(this, elContainer,aColumnDefs,oDataSource,oConfigs); 
+            YAHOO.widget.RowExpansionDataTable.superclass.constructor.call(this, elContainer,aColumnDefs,oDataSource,oConfigs);
 
         };
 
-        YAHOO.lang.extend( 
+        YAHOO.lang.extend(
             YAHOO.widget.RowExpansionDataTable,
-            YAHOO.widget.ScrollingDataTable, 
+            YAHOO.widget.ScrollingDataTable,
             {
 
                 //////////////////////////////////////////////////////////////////
@@ -227,8 +227,8 @@ YUI.add('rowexpansion', function(Y) {
 
                         if( YAHOO.lang.isString( template ) ){
 
-                            liner_element.innerHTML = YAHOO.lang.substitute( 
-                                template, 
+                            liner_element.innerHTML = YAHOO.lang.substitute(
+                                template,
                                 expanded_data
                             );
 
@@ -237,8 +237,8 @@ YUI.add('rowexpansion', function(Y) {
                             template( {
                                 row_element : new_row,
                                 liner_element : liner_element,
-                                data : row_data, 
-                                state : state 
+                                data : row_data,
+                                state : state
                             } );
 
                         } else {
@@ -272,7 +272,7 @@ YUI.add('rowexpansion', function(Y) {
 
                             return false;
 
-                        } 
+                        }
 
                     }
 

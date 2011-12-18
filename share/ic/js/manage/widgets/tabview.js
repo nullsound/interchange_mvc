@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -41,7 +41,7 @@ YUI.add(
                     this.after('stateChange', Y.bind(this._afterStateChange, this));
                     if (!this._on_history_change) {
                         this._on_history_change = Y.on(
-                            'history-lite:change', 
+                            'history-lite:change',
                             Y.bind(this._onHistoryChange, this)
                         );
                     }
@@ -192,7 +192,7 @@ YUI.add(
                 },
 
                 _afterStateChange: function (e) {
-                    // Y.log('tabview::_afterStateChange - prefix: ' + 
+                    // Y.log('tabview::_afterStateChange - prefix: ' +
                     //       this.get('prefix'));
                     var state = Number(this.get('state.st'));
                     // Y.log('state.st: ' + state);
@@ -203,7 +203,7 @@ YUI.add(
                 },
 
                 _myAfterSelectionChange: function (e) {
-                    // Y.log('tabview::_myAfterSelectionChange - st: ' + 
+                    // Y.log('tabview::_myAfterSelectionChange - st: ' +
                     //       e.newVal.get('index'));
                     var st = e.newVal.get('index');
 
@@ -214,7 +214,7 @@ YUI.add(
                         this.set('state.st', st)
                     }
                     else {
-                        // Y.log('states already match: ' + 
+                        // Y.log('states already match: ' +
                         //       this.get('state.st') + ':' + st);
                     }
                     this.fire('manageTabView:tabselected');

@@ -66,7 +66,7 @@ sub make_manager_package {
         @$isa_name = qw( IC::Model::Rose::Object::Manager );
         *$model_class_subname = $model_class_sub;
     }
-    
+
     $target_package->make_manager_methods( 'instances' );
 }
 
@@ -135,7 +135,7 @@ sub make_manager_package {
 			# Now only 1 item left; put it on the base stack (the starting point for row transformation)
 			push @start, $list->[0] if ! $start_seen{$list->[0]}++;
 		}
-		
+
 		return $result;
 	};
 
@@ -243,7 +243,7 @@ sub make_manager_package {
                 and defined $loop_meta
                 and defined $loop_counters
         ;
-        
+
 		$self->$reset_loop( $loop_name, $relations );
 		my $processing_info = $self->$resolve_associations( $relations );
         #print STDERR "resolved associations:\n" . Dumper($processing_info) . "\n\n";
@@ -295,7 +295,7 @@ sub from_hashkey {
     my $hash = {};
     @$hash{ sort @{ $self->meta->primary_key_columns } } = split /_/, $hashkey;
 
-    return; 
+    return;
 }
 
 sub add_tracked_columns {
@@ -447,7 +447,7 @@ Because a C<save()> will ultimately invoke either an C<insert()> or an C<update(
 C<save()> invocations result in two invocations of the observer.
 
 The notification can be transaction-aware; if the above methods are invoked within a transaction, and the
-B<IC::Model> is transaction-aware, then C<commit_callbacks()> functionality is used such that notification 
+B<IC::Model> is transaction-aware, then C<commit_callbacks()> functionality is used such that notification
 only occurs after the transaction succeeds.  This means that notification may be delayed by some time relative to
 its corresponding causal method invocation.
 
@@ -484,10 +484,10 @@ use this behavior to keep the cache accurate.
  package MyApp::Model;
  use base qw(IC::Model::Rose::Object);
  # ...assume the usual Rose metadata blather...
- 
+
  package MyApp::Cache;
  # ...cache management particulars to skip
- 
+
  # update method is invoked at notification time
  sub update {
      my ($self, $rose_obj, $action) = @_;
@@ -496,7 +496,7 @@ use this behavior to keep the cache accurate.
      $self->clear_cache_by_key( $rose_obj->id )
          if $action eq 'delete' or $action eq 'update';
  }
- 
+
  # now subscribe this to the model class
  MyApp::Model->add_observer( __PACKAGE__ );
 
@@ -544,6 +544,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

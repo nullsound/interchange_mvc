@@ -246,10 +246,10 @@ the Interchange application, we could set up a URI path space along the lines of
 
  http://example.com/cgi-bin/catalog/specials
    => App::Products controller's "show_specials" action
- 
+
  http://example.com/cgi-bin/catalog/contact
    => App::Service controller's "contact_form" action
- 
+
  http://example.com/cgi-bin/catalog/foo/bar/ble
    => App::Foo controller's "bar" action
       with $controller->parameters->{argument} = 'ble'
@@ -316,7 +316,7 @@ can be edited, removed, etc. as your URI design needs evolve.  So, create a new 
 This creates the App::Routes routing handler package; because it is named in the MVC_ROUTE_PACKAGE variable, the
 mvc_dispatcher sub will use it to process the request path and determine if the request maps to an MVC
 controller/action combination.  The "__PACKAGE__->route(...)" call registers a single route within the handler,
-consisting only of the pattern ":controller/:action".  The ":controller" token means that the URI path 
+consisting only of the pattern ":controller/:action".  The ":controller" token means that the URI path
 (relative to the IC linker path portion) of the request must start with a segment that matches the registered
 name of a known controller.  The ":action" token means that whatever comes next in the path will be assumed to
 be the action to invoke on the controller identified via ":controller".
@@ -333,10 +333,10 @@ the controller can be uniquely identified within the application; we'll want to 
  # always do this, unless you enjoy pain and suffering.
  use strict;
  use warnings;
- 
+
  # set the registered_name off this to "demo".
  __PACKAGE__->registered_name('demo');
- 
+
  1;
 
 That gives us the App::Demo controller, with registered name "demo".  The registered name means that any URI route
@@ -610,7 +610,7 @@ the existing route registration:
 This sets up a pattern that must start with a path segment "wiki" and have only one additional path segment, the value
 of which goes to the controller's B<parameters> hash under the name "article" (by virtue of using ":article" as the
 token within the pattern's corresponding path segment).  Furthermore, we specify a default value for "article" within
-the route's I<defaults> hash, which means that the ":article" portion of the path pattern can in fact be unfilled; 
+the route's I<defaults> hash, which means that the ":article" portion of the path pattern can in fact be unfilled;
 this means that paths "wiki" and "wiki/" will both match this route, and will result in an "article" value of "main_page".
 
 Note that the action always defaults to "wiki_display", meaning that a successful match on this route means that the
@@ -1096,7 +1096,7 @@ just like a regular view from a regular action.
 
 Restart your Interchange daemon.  Now if conditions arise that cause an exception, it'll be handled by the above
 code and view.
- 
+
 =head3 WHERE TO GO FROM HERE
 
 This tutorial gives a high-level overview and a very basic introduction to Interchange MVC.  However,
@@ -1176,7 +1176,7 @@ Create a new module App::Base that loads in what you need:
  use warnings;
  # load all the controllers before you load the routing package
  use App::Demo;
- 
+
  # now its safe to load the routes
  use App::Routes;
 

@@ -42,7 +42,7 @@ SKIP: {
         qr{^a: a\s*$},
         'render(): layout filtered out',
     );
-    
+
 =cut
 
 Oops... this is inappropriate to do anywhere but within the controller test itself...
@@ -52,7 +52,7 @@ Oops... this is inappropriate to do anywhere but within the controller test itse
         qr{},
         'render(): nested call',
     );
-    
+
 =cut
 
 }

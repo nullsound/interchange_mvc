@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -29,8 +29,8 @@ YUI.add(
             DTMAX: 1,
             DTDV: 2,
 
-            hqueue: {},    // not really a queue... 
-                           //  keeps track of what needs to be in the 
+            hqueue: {},    // not really a queue...
+                           //  keeps track of what needs to be in the
                            //  next history update
 
             // might be cleaner to get the STATE_PROPERTIES from each
@@ -40,15 +40,15 @@ YUI.add(
                     _mwlc: 'dash'
                 },
                 {
-                    _mwlc: 'dtmax', 
+                    _mwlc: 'dtmax',
                     _dtkind: 'function', _dtsub_kind: 'list', _dtargs: true,
-                    _lsresults: true, _lsstartIndex: true, _lssort: true, 
+                    _lsresults: true, _lsstartIndex: true, _lssort: true,
                     _lsdir: true, _lssrec: '-1'
                 },
                 {
-                    _mwlc: 'dtdv', 
+                    _mwlc: 'dtdv',
                     _dtkind: 'function', _dtsub_kind: 'list', _dtargs: true,
-                    _lsresults: true, _lsstartIndex: true, _lssort: true, 
+                    _lsresults: true, _lsstartIndex: true, _lssort: true,
                     _lsdir: true, _lssrec: true,
                     _dvkind: 'function', _dvsub_kind: 'detail', _dvargs: true,
                     _dx_otst: true
@@ -75,7 +75,7 @@ YUI.add(
             checkCompleteness: function (history) {
                 // Y.log('history:checkCompleteness - states');
 
-                if (!history) 
+                if (!history)
                     history = Y.HistoryLite.get();
 
                 // merge the history with the queue, often necessary
@@ -83,7 +83,7 @@ YUI.add(
                 //  a profile.
                 var states = Y.merge(history, ManageHistory.hqueue);
                 // Y.log(states);
-                
+
                 // run through each of our profiles
                 var test;
                 Y.some(ManageHistory.profiles, function (profile) {

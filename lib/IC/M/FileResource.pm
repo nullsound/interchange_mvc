@@ -77,15 +77,15 @@ sub manage_description {
 #       record to pull the parents all at once, and it might
 #       be better... though it might not, so it should be
 #       benchmarked
-#       
+#
 sub get_all_parents {
     my $self = shift;
     my $args = { @_ };
 
     $args->{as_object} ||= 0;
-    
+
     my @parents;
-    
+
     my $obj = $self;
     while (my $parent = $obj->parent) {
         if ($args->{as_object}) {
@@ -94,12 +94,12 @@ sub get_all_parents {
         else {
             push @parents, $parent->id;
         }
-    
+
         $obj = $obj->parent;
     }
 
     return wantarray ? @parents : \@parents;
-}   
+}
 
 
 #
@@ -164,6 +164,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -135,7 +135,7 @@ __PACKAGE__->error_handler( 'handle_exception' );
 
         around @_ => $method_cache;
 
-        return @_; 
+        return @_;
     }
 }
 
@@ -488,7 +488,7 @@ B<IC::C>: base controller class used for provided controllers
 =head1 DESCRIPTION
 
 All controller classes in the application within the B<IC::C::> space should inherit
-from this class.  It derives from B<IC::Controller>, but adds a variety of templating 
+from this class.  It derives from B<IC::Controller>, but adds a variety of templating
 and access control methods and attributes
 
 =head1 ATTRIBUTES
@@ -566,7 +566,7 @@ I<totally_unsafe> and I<completely_unwise> action methods, then you would want t
      );
      return
  }
- 
+
  sub totally_unsafe {
      my $self = shift;
      EndPoint::M::WorkEntry->delete_objects();
@@ -717,7 +717,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut
 

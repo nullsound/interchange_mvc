@@ -54,7 +54,7 @@ only covering how these are used collectively through this module.
   # for this, don't specify the controllers; in this case, the route will default
   # to work with all controllers publicly named within IC::Controller
   $routes->route(
-      pattern     => ':controller/:action/:id', 
+      pattern     => ':controller/:action/:id',
 	  defaults    => { action => 'index', id => undef, },
   );
 
@@ -83,7 +83,7 @@ note that we could do the following:
   package MyApp::Routes;
   use IC::Controller::Route;
   use base qw(IC::Controller::Route);
-  
+
   __PACKAGE__->route(
       pattern    => 'admin/:resource/:id',
 	  controller => 'admin',
@@ -113,15 +113,15 @@ note that we could do the following:
   package main;
   # we can perform the routing lookups and whatnot via the package name rather than
   # through an instance
-  
+
   # show me user 124.
   my $params = MyApp::Routes->parse_path( 'admin/users/124' );
   # $params is { controller => 'admin', resource => 'users', id => 124, action => 'show' }...
-  
+
   # now let's edit user 124
   $params = MyApp::Routes->parse_path( 'admin/users/124', 'post' );
   # controller 'admin', resource 'users', id 124, action 'edit'...
-  
+
   # and now for something completely different...
   $params = MyApp::Routes->parse_path( 'television/lessons/topics/seen/not_being' );
   # controller 'television', action 'lessons' params [qw( topics seen not_being )]
@@ -385,6 +385,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

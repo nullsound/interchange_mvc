@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -28,7 +28,7 @@ YUI.add(
             visible: {
                 value: true
             },
-            prefix: {        // a prefix for history state variables 
+            prefix: {        // a prefix for history state variables
                 value: null  //  to distinguish this object from its siblings
             },
             state: {         // my state, used by history to drive my content
@@ -40,7 +40,7 @@ YUI.add(
                     // useful debug for a specific object
                     /*
                     if (this.get('prefix') === '_ls') {
-                        Y.log('sp -> old_state -> new_state :: prefix = ' + 
+                        Y.log('sp -> old_state -> new_state :: prefix = ' +
                               this.get('prefix'));
                         Y.log(sp);
                         Y.log(Y.merge(old_state));
@@ -91,7 +91,7 @@ YUI.add(
                 // Y.log('history_manager::show - prefix: ' + this.get('prefix'));
                 if (!this._on_history_change) {
                     this._on_history_change = Y.on(
-                        'history-lite:change', 
+                        'history-lite:change',
                         Y.bind(this._onHistoryChange, this)
                     );
                 }
@@ -160,7 +160,7 @@ YUI.add(
              * STATE_PROPERTIES that are set in history data.
              */
             getRelaventHistory: function () {
-                // Y.log('history_manager::getRelaventHistory - prefix:' + 
+                // Y.log('history_manager::getRelaventHistory - prefix:' +
                 //       this.get('prefix'));
                 var rh = {}; // relavent history
                 var sp = this.STATE_PROPERTIES;
@@ -250,7 +250,7 @@ YUI.add(
             },
 
             _onHistoryChange: function (e) {
-                // Y.log('history_manager::_onHistoryChange - prefix: ' + 
+                // Y.log('history_manager::_onHistoryChange - prefix: ' +
                 //       this.get('prefix'));
                 if ( ! this.stateMatchesHistory() ) {
                     /*
@@ -276,4 +276,4 @@ YUI.add(
         ]
     }
 );
-    
+

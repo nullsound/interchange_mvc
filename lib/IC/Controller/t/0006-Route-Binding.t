@@ -37,7 +37,7 @@ for my $attrib (qw(controller_parameters name_map parameters)) {
     eval {
         $binding->$sub( [] );
     };
-    
+
     ok(
         $@,
         $attrib . '(): rejects non-hash',

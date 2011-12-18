@@ -50,7 +50,7 @@ sub login_form {
 sub login_auth {
     my $self = shift;
     my $params = $self->parameters;
-    
+
     my $user = eval {
         IC::M::User->authenticate_credentials(
             username    => $params->{username},
@@ -59,7 +59,7 @@ sub login_auth {
     };
     return $self->_login_form($@) if $@;
 
-    $self->_login($user);   
+    $self->_login($user);
 
     return $self->_post_login_redirect;
 }
@@ -154,7 +154,7 @@ sub account_maintenance_save {
             unless (length $new_password > 4) {
                 IC::Exception::AccountMaintenancePasswordInvalid->throw('Unable to set new password: invalid password (length)');
             }
-            if (lc $new_password eq lc $user->username) {         
+            if (lc $new_password eq lc $user->username) {
                 IC::Exception::AccountMaintenancePasswordInvalid->throw('Unable to set new password: invalid password (username match)');
             }
 
@@ -251,7 +251,7 @@ sub _login_form {
     $self->content_title('Login Form');
     $self->content_subtitle('Unauthorized Use Prohibited - Access Logged');
     $self->add_error_messages($exception) if $exception;
-    
+
     my $view = $self->registered_name . '/login_form';
     $self->add_stylesheet(
         kind => 'ic',
@@ -278,7 +278,7 @@ sub _post_login_redirect {
         secure     => 1,
     );
 
-    return; 
+    return;
 }
 
 sub _login {
@@ -322,6 +322,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

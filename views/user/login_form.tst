@@ -1,4 +1,4 @@
-<form 
+<form
     id="user_login_form"
     method="post"
     action="<%=

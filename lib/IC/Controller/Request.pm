@@ -41,10 +41,10 @@ common header information, cookies, etc. is pretty straightforward:
   else {
       print 'No SSL!';
   }
-  
+
   # get/post
   printf 'The %s request method was used.', $request->method;
-  
+
   # be restfully read-only with your CGI variables!
   my %vars;
   if ($request->method eq 'post') {
@@ -59,7 +59,7 @@ And of course access to cookies is considerably saner:
   for my $cookie ($request->cookies) {
       printf 'cookie name %s has value %s', $cookie->{name}, $cookie->{value};
   }
-  
+
 ...or...
 
   my $cookie_value = $request->get_cookie($cookie_name);
@@ -254,7 +254,7 @@ sub get_cookie {
 			return $cookie_value;
 		}
 	}
-		
+
 	# If we got this far the cookie doesn't exist.
 	return undef;
 }
@@ -280,6 +280,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

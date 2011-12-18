@@ -91,14 +91,14 @@ sub render {
     eval {
         $self->content( $template->fill(PACKAGE => $safe) );
     };
-    
+
     $self->_safe_hole( undef );
     $self->_safe( undef );
-    
+
 	die 'An error occured when rendering the view: ' . $@
 		if $@
 	;
-    
+
 	return;
 }
 
@@ -110,7 +110,7 @@ sub parse {
     # remove ths cache call until I know how to handle it -- Ethan
     # $template->cache($opt->{path});
     $template->load($path);
-    
+
     my %vars = (
         Carts => $::Carts,
         CGI_array => \%CGI::values_array,
@@ -146,7 +146,7 @@ sub parse {
     eval {
         $result = $template->fill(PACKAGE => 'IC::View::TST::Eval');#$safe);
     };
-    
+
     if ($@) {
         ::logError("Template fill action failed for view '%s':\n%s", $path, $@);
         return undef;
@@ -171,7 +171,7 @@ This module provides support for ASP-style Perl within MVC Interchange's view pr
 (as implemented via B<IC::View> and B<IC::View::Base>).
 
 While Interchange Tag Language (ITL) is still available for use within MVC Interchange, ITL does not
-fit very well into an object-oriented idiom. 
+fit very well into an object-oriented idiom.
 Furthermore, ITL itself does not really allow for use of "helper modules" effectively, as the Interchange
 Safe module preparation is not fully exposed with a clean interface.  Therefore, B<IC::View::TST>
 addresses this issues directly, allowing easy use of objects and complex data structures within views,
@@ -227,6 +227,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -112,7 +112,7 @@ for my $url_base ($Vend::Cfg->{VendURL}, $Vend::Cfg->{SecureURL}) {
         $url_base . '/bogus/test2',
         'url(): basic route with controller defaulting to controller()->registered_name',
     );
-    
+
     cmp_ok(
         url(
             action => 'test3',
@@ -199,11 +199,11 @@ SKIP: {
     skip('Unable to load IC::Controller::Route::Binding package', 6) if $@;
 
     my $base = $Vend::Cfg->{VendURL};
-    
+
     IC::Controller::HelperBase->bind_to_controller( $controller );
     my $route_handler = undef;
     my $suffix = ' (default routing)';
-    
+
     while (1) {
         my $binding = IC::Controller::Route::Binding->new;
         $binding->controller( 'bogus' );
@@ -217,7 +217,7 @@ SKIP: {
             $base . '/bogus/action/foo',
             'url(): binding controller information and parameters' . $suffix,
         );
-        
+
         $binding->parameters( { a => 'a' } );
         cmp_ok(
             url( binding => $binding, no_session => 1, ),

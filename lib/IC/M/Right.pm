@@ -186,7 +186,7 @@ This should return the value for the target column in the I<right_types> table f
 
 =item I<target_relationship()>
 
-This should return the name of the relationship you used when extending B<IC::M::Right> above, it is the one-to-many relationship used to find target records. 
+This should return the name of the relationship you used when extending B<IC::M::Right> above, it is the one-to-many relationship used to find target records.
 
 =item I<target_influencers( $targets, $graph )>
 
@@ -255,7 +255,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut
 

@@ -37,7 +37,7 @@ sub _validate_adhoc_user {
 		"Invalid user; must run as owner of base path, not %s\n",
 		$obj->name
 	) unless -o $invocant->_setting_get('base_path');
-	
+
     $invocant->_setting_set('user', $obj);
 
     return $invocant->_setting_get('user');
@@ -82,6 +82,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

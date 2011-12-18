@@ -10,8 +10,8 @@ YUI.add('gallery-calendar', function(Y) {
  * @return { object } a new calendar
  * @requires { 'node' }
  * @requires { calendar-skin-default } skin
- * 
- * Y.Calenar	
+ *
+ * Y.Calenar
  *	info	calendar constructor
  *	useage	new Y.Calendar(id,options);
  *	param	id:{string} container id
@@ -31,7 +31,7 @@ YUI.add('gallery-calendar', function(Y) {
  *			render,rewrite old params
  *			hide
  *			show
- *		
+ *
  */
 YUI.namespace('Y.Calendar');
 //Y.Get.css('');
@@ -123,7 +123,7 @@ Y.mix(Y.Calendar,{
 			if(i === (that.multi_page - 1)){
 				_next = true;
 			}else {
-				_next = false;	
+				_next = false;
 			}
 			that.ca.push(new that.Call({
 				year:_oym[0],
@@ -160,7 +160,7 @@ Y.mix(Y.Calendar,{
 		if(!that.popup){
 			return this;
 		}
-		//click on the vacant space 
+		//click on the vacant space
 		//flush event
 		for(var i = 0;i<that.EV.length;i++){
 			if(typeof that.EV[i] != 'undefined'){
@@ -380,7 +380,7 @@ Y.mix(Y.Calendar,{
 		}
 		return this;
 	},
-	//constructor 
+	//constructor
 	/**
 	 * TimeSelector consructor
 	 */
@@ -402,14 +402,14 @@ Y.mix(Y.Calendar,{
 		this.m_a = ['00','10','20','30','40','50'];
 		//seconds
 		this.s_a = ['00','10','20','30','40','50'];
-				
+
 
 		//interface----------------
 		/**
 		 * create html code of the container
 		 * param: Array
 		 * return: html code
-		 * 
+		 *
 		 */
 		this.parseSubHtml = function(a){
 			var in_str = '';
@@ -521,9 +521,9 @@ Y.mix(Y.Calendar,{
 			v--;
 			that.set(status,v);
 		};
-		
 
-		
+
+
 		//constructor---------
 		this.init = function(){
 			var that = this;
@@ -592,7 +592,7 @@ Y.mix(Y.Calendar,{
 				that.status = 's';
 				that.showPopup(in_str);
 			});
-			
+
 
 
 		};
@@ -604,7 +604,7 @@ Y.mix(Y.Calendar,{
 	/**
 	 * constructor of calendar pages
 	 * @constructor Y.Calendar.prototype.Call
-	 * @param {object} config 
+	 * @param {object} config
 	 * @param {object} fathor,ref of the Y.Calendar instance
 	 * @return calendar pages
 	 */
@@ -621,7 +621,7 @@ Y.mix(Y.Calendar,{
 		this.EV = [];
 		this.html = [
 			'<div class="c-box" id="{$id}">',
-				'<div class="c-hd">', 
+				'<div class="c-hd">',
 					'<a href="javascript:void(0);" class="prev {$prev}"><</a>',
 					'<a href="javascript:void(0);" class="title">{$title}</a>',
 					'<a href="javascript:void(0);" class="next {$next}">></a>',
@@ -775,7 +775,7 @@ Y.mix(Y.Calendar,{
 					try{
 						cc.timmer.hidePopup();
 					}catch(e){}
-					e.halt();	
+					e.halt();
 					var setime_node = con.query('.setime');
 					setime_node.set('innerHTML','');
 					var in_str = cc.fathor.templetShow(cc.nav_html,{
@@ -838,7 +838,7 @@ Y.mix(Y.Calendar,{
 			var s = '';
 			var startweekday = new Date(cc.year+'/'+(cc.month+1)+'/01').getDay();//the first day of this Month
 			var k = cc.fathor.getNumOfDays(cc.year,cc.month + 1) + startweekday;
-			
+
 			for(var i = 0;i< k;i++){
 				//prepare data {{
 				if(/532/.test(Y.UA.webkit)){//hack for chrome
@@ -853,7 +853,7 @@ Y.mix(Y.Calendar,{
 				}else if( cc.fathor.mindate instanceof Date
 							&& new Date(cc.year+'/'+(cc.month+1)+'/'+(i+2-startweekday)).getTime() < (cc.fathor.mindate.getTime()+1)  ){//disabled
 					s+= '<a href="javascript:void(0);" class="disabled">'+(i - startweekday + 1)+'</a>';
-					
+
 				}else if(cc.fathor.maxdate instanceof Date
 							&& new Date(cc.year+'/'+(cc.month+1)+'/'+(i+1-startweekday)).getTime() > cc.fathor.maxdate.getTime()  ){//disabled
 					s+= '<a href="javascript:void(0);" class="disabled">'+(i - startweekday + 1)+'</a>';
@@ -862,24 +862,24 @@ Y.mix(Y.Calendar,{
 				}else if((cc.fathor.range.start != null && cc.fathor.range.end != null) //select range
 							&& (
 								_td_s.getTime()>=cc.fathor.range.start.getTime() && _td_e.getTime() < cc.fathor.range.end.getTime()) ){
-							
+
 							//alert(Y.dump(_td_s.getDate()));
-							
-						if(i === (startweekday + (new Date()).getDate() - 1) 
-							&& (new Date()).getFullYear() === cc.year 
+
+						if(i === (startweekday + (new Date()).getDate() - 1)
+							&& (new Date()).getFullYear() === cc.year
 							&& (new Date()).getMonth() === cc.month){//today
 							s+='<a href="javascript:void(0);" class="range today">'+(i - startweekday + 1)+'</a>';
 						}else{
 							s+= '<a href="javascript:void(0);" class="range">'+(i - startweekday + 1)+'</a>';
 						}
 
-				}else if(i === (startweekday + (new Date()).getDate() - 1) 
-							&& (new Date()).getFullYear() === cc.year 
+				}else if(i === (startweekday + (new Date()).getDate() - 1)
+							&& (new Date()).getFullYear() === cc.year
 							&& (new Date()).getMonth() === cc.month){//today
 					s += '<a href="javascript:void(0);" class="today">'+(i - startweekday + 1)+'</a>';
 
-				}else if(i === (startweekday + cc.fathor.selected.getDate() - 1) 
-							&& cc.month === cc.fathor.selected.getMonth() 
+				}else if(i === (startweekday + cc.fathor.selected.getDate() - 1)
+							&& cc.month === cc.fathor.selected.getMonth()
 							&& cc.year === cc.fathor.selected.getFullYear()){//selected
 					s += '<a href="javascript:void(0);" class="selected">'+(i - startweekday + 1)+'</a>';
 				}else{//other
@@ -906,7 +906,7 @@ Y.mix(Y.Calendar,{
 
 
 	}//Call constructor over
-	
+
 },0,null,4);
 
 //},'3.0.0',{requires:['node']});

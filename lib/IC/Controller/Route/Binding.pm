@@ -156,7 +156,7 @@ resolving the widget's local parameter needs with the controller's higher-level 
   use Some::Widget;
   use Moose;
   extends qw(IC::Controller);
-  
+
   sub some_action {
       my $self = shift;
       # apparently, this controller action is dependent on receiving parameter "bar".
@@ -186,7 +186,7 @@ resolving the widget's local parameter needs with the controller's higher-level 
               },
           )
       );
-      
+
       $widget->do_your_thing();
       ...
   }
@@ -198,7 +198,7 @@ On the widget side of the picture...
   use Moose;
   has binding => (is => 'rw', isa => 'IC::Controller::Route::Binding', );
   has data => (is => 'rw',);
-  
+
   sub do_your_thing {
       my $self = shift;
       # the widget puts whatever parameters it needs into the binding object
@@ -212,7 +212,7 @@ On the widget side of the picture...
       my $href = url( binding => $self->binding );
       ...
   }
-  
+
 =head1 ATTRIBUTES
 
 Per usual, all attributes are Moose-style.
@@ -318,6 +318,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -66,7 +66,7 @@ sub _properties_form_hook {
     my $target_kinds = IC::M::RightTypeTargetKind::Manager->get_objects( sort_by => 'display_label' );
 
     for my $element (@$target_kinds) {
-        push @$target_kind_options, { 
+        push @$target_kind_options, {
             value    => $element->code,
             selected => ((defined $values->{target_kind_code} and $values->{target_kind_code} eq $element->code) ? ' selected="selected"' : ''),
             display  => $element->display_label,
@@ -122,6 +122,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -60,7 +60,7 @@ $ctl_ref->error_handler($handler_sub);
     my $result = $ctl_ref->handle_error( 'some error' );
     $result = UNIVERSAL::isa($result, 'IC::Controller::Response') ? ${$result->buffer}  : undef;
     is($result, "handled error from $ctl_ref", 'handle_error() dispatching to error handler reference');
-    
+
     $result = $ctl_str->handle_error( 'some other error' );
     $result = UNIVERSAL::isa($result, 'IC::Controller::Response') ? ${$result->buffer} : undef;
     is($result, "handled error from $ctl_str", 'handle_error() dispatching to error handler by name');

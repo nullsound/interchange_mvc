@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 /**
@@ -33,7 +33,7 @@ YUI.add(
             TREEVIEWLITE    = "treeviewlite",
             getCN           = Y.ClassNameManager.getClassName,
             CSS_TOP         = getCN( TREEVIEWLITE ), //"yui3-treeviewlite",
-            CSS_HAS_CHILD   = getCN( TREEVIEWLITE , "haschild" ), //"yui3-treeviewlite-haschild", 
+            CSS_HAS_CHILD   = getCN( TREEVIEWLITE , "haschild" ), //"yui3-treeviewlite-haschild",
             CSS_FINAL_CHILD = getCN( TREEVIEWLITE , "lastchild" ), //"yui3-treeviewlite-lastchild",
             CSS_COLLAPSED   = getCN( TREEVIEWLITE , "collapsed" ), //"yui3-treeviewlite-collapsed";
             CSS_CLEARED     = getCN( TREEVIEWLITE , "cleared" ), //"yui3-treeviewlite-cleared";
@@ -41,7 +41,7 @@ YUI.add(
         TreeviewLite = function(config) {
             TreeviewLite.superclass.constructor.apply(this, arguments);
         };
-        
+
         /**
         * @property NAME
         * @type {String}
@@ -50,7 +50,7 @@ YUI.add(
 
         /**
         * @property NS
-        * @description The treeview instance will be placed on the Node instance 
+        * @description The treeview instance will be placed on the Node instance
         *         under the treeviewlight namespace. It can be accessed via Node.treeviewlight;
         * @type {String}
         */
@@ -103,9 +103,9 @@ YUI.add(
                 value: null
             }
         };
-        
+
         Y.extend(TreeviewLite, Y.Plugin.Base, {
-            
+
             /**
              * Stores handles for delegated event listener(s).
              * @property _delegates
@@ -113,7 +113,7 @@ YUI.add(
              * @type Array
              */
             _delegates: [],
-            
+
             /**
              * Lifecycle: add classes and a delegated listener
              * @method initializer
@@ -122,14 +122,14 @@ YUI.add(
               this.renderUI();
               this.bindUI();
             },
-            
+
             /**
              * Lifecycle: removes classes and listener(s)
              * @method destructor
              */
             destructor: function () {
               var host = this.get(HOST);
-              
+
               host.removeClass(CSS_TOP);
               host.all("li").removeClass(CSS_HAS_CHILD)
                             .removeClass(CSS_COLLAPSED)
@@ -144,22 +144,22 @@ YUI.add(
              */
             renderUI : function () {
               var host = this.get(HOST);
-              
+
               host.addClass(CSS_TOP);
-              
-              Y.each(host.all("li") , function (n) { 
+
+              Y.each(host.all("li") , function (n) {
                    // add class if they have child lists
                    n.removeClass( CSS_HAS_CHILD );
                    if(n.one("ol li,ul li")) {
                        n.addClass(CSS_HAS_CHILD);
                    }
-                   
+
                    // add a 'last child' css.
                    n.removeClass(CSS_FINAL_CHILD);
                    if (n.next() === null) {
                      n.addClass(CSS_FINAL_CHILD);
                    }
-              });            
+              });
             },
 
             /**
@@ -197,10 +197,10 @@ YUI.add(
             _doAction: function (e, action, bool, selector, parent) {
                 // Y.log('treeview::_doAction');
                 if (!parent) parent = e.target.get("parentNode");
-                
+
                 parent.removeClass(CSS_CLEARED);
-                if (parent.test('li') && 
-                    (parent.hasClass(CSS_COLLAPSED) == bool) ) { 
+                if (parent.test('li') &&
+                    (parent.hasClass(CSS_COLLAPSED) == bool) ) {
                     this.fire(action, e);
                     if (bool) parent.removeClass(CSS_COLLAPSED);
                     else parent.addClass(CSS_COLLAPSED);
@@ -219,13 +219,13 @@ YUI.add(
 
             _collapseTree: function (e, parent) {
                 // Y.log('treeview::_collapseTree');
-                this._doAction(e, 'collapse', false, 
+                this._doAction(e, 'collapse', false,
                                'li.yui3-treeviewlite-haschild', parent);
             },
 
             _expandTree: function (e, parent) {
                 // Y.log('treeview::_expandTree');
-                this._doAction(e, 'open', true, 
+                this._doAction(e, 'open', true,
                                'li.yui3-treeviewlite-collapsed', parent);
             },
 
@@ -352,13 +352,13 @@ YUI.add(
              * <p>Opens or collapses a nested list.</p>
              * @method _toggleCollapse
              * @param {EventFacade} e Event object
-             * @protected 
+             * @protected
              */
             _toggleCollapse : function (e){
                 // Y.log('treeview::_toggleCollapse');
                 var parent = e.currentTarget.get("parentNode");
                 if( parent.one("ol,ul") ){
-                    if( parent.hasClass(CSS_COLLAPSED) ) { 
+                    if( parent.hasClass(CSS_COLLAPSED) ) {
                         /**
                          * <p>Event fired when a list is opened</p>
                          * @event open
@@ -376,9 +376,9 @@ YUI.add(
                     parent.removeClass(CSS_CLEARED);
                     parent.toggleClass(CSS_COLLAPSED);
                 }
-            }            
+            }
         });
-        
+
         Y.namespace("IC");
         Y.IC.ManageTreeview = TreeviewLite;
 

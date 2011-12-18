@@ -47,10 +47,10 @@ following manner:
 
  # An instance of this class does very little, but illustrates the point
  my $obj = IC::Log::Logger::Moose->new;
- 
+
  # Use the system default logger of IC::Log...
  $obj->logger->warn('Oh, no, a logging message!');
- 
+
  # Use a specific logger object instead of system default.
  $obj->set_logger( IC::Logger::SuperDuperLogMechanism->new );
  $obj->logger->warn('Oh, my, this one goes to the super-duper logs');
@@ -68,9 +68,9 @@ The most common use scenario for B<IC::Log::Logger::Moose> would be in subclassi
  use Moose;
  use IC::Log::Logger::Moose;
  extends 'IC::Log::Logger::Moose';
- 
+
  has some_attribute => (is => 'rw', default => sub { 'foo' });
- 
+
  sub some_method {
      my $self = shift;
      $self->logger->notice(
@@ -173,6 +173,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

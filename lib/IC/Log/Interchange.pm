@@ -131,22 +131,22 @@ logging message.
 =head1 USAGE
 
 Usage of this is pretty straightforward.
- 
+
  use IC::Log::Interchange;
- 
+
  my $logger = IC::Log::Interchange->new;
- 
+
  ...
- 
+
  $logger->debug('Hey, the value of $plonka is: %s', $plonka);
- 
+
  ...
- 
+
  if ($death_to_thee) {
      $logger->crit('Death specified by value: %s', $death_to_thee);
      die;
  }
- 
+
  # This message will go to standard IC logs if in running IC, but will be quiet outside IC
  $logger->quiet_fallback(1);
  $logger->notice('If you see this message, you must be running me in IC!');
@@ -207,6 +207,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

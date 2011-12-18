@@ -7,7 +7,7 @@ sub implements_type_target {
     return 'site_mgmt_func';
 }
 
-#sub target_relationship { 
+#sub target_relationship {
     #return 'site_mgmt_func_targets';
 #}
 
@@ -46,6 +46,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

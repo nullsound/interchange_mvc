@@ -128,7 +128,7 @@ sub _relation_check {
     my %set = map { $_ => 1 }
         grep { !defined($seen) or !$seen->{$_}++ }
         map { @$_ } @{$opt{mapping}}{@{$opt{source}}};
-    
+
     if (%set and !$no_result) {
         my @new_targets;
         for my $target (@{$opt{targets}}) {
@@ -201,7 +201,7 @@ the graph in question.
  package IC::M::ThingThatUses::Graph;
  use Moose;
  with 'IC::M::Graph';
- 
+
  # let's say this class uses the DB to get the map; it needs
  # a database handle.
  has db => (
@@ -209,7 +209,7 @@ the graph in question.
      default => sub { IC::Model::Rose::DB->new },
      lazy => 1,
  );
- 
+
  # fetch_relations is used by IC::M::Graph
  # to build its map
  sub fetch_relations {
@@ -292,18 +292,18 @@ Some other examples:
  # all the nodes that do not reference anything
  $graph->no_references;
  # [4, 5, 6]
- 
+
  # all the nodes that are not referenced by anything
  $graph->no_referers;
  # [1, 7]
- 
+
  # which of the following does 1 reference?
  $graph->has_reference(
       node => 1,
       targets => [4, 5, 6, 7],
  );
  # result: [4, 5, 6]
- 
+
  # how many are within 2 generations?
  $graph->has_reference(
      node => 1,
@@ -311,7 +311,7 @@ Some other examples:
      generations => 2,
  );
  # result: [4, 5]
- 
+
  # how about within 1 generation?
  $graph->has_reference(
      node => 1,
@@ -319,7 +319,7 @@ Some other examples:
      generations => 1,
  );
  # result: []
- 
+
  # how about exactly 3 generations?
  $graph->has_reference)
      node => 1,
@@ -479,6 +479,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

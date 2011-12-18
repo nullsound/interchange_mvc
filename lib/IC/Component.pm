@@ -108,7 +108,7 @@ sub render {
         push @views, 'components/' . $view;
         $params{view} = \@views;
     }
-    
+
     # prepare view context from object attributes
     if (ref($params{context}) ne 'HASH') {
         my %context;
@@ -119,7 +119,7 @@ sub render {
         }
         $params{context} = \%context;
     }
-    
+
     # we use the controller to do the actual render, so the controller's view settings rule.
     return $controller->render_local( %params );
 }
@@ -181,7 +181,7 @@ itself based on some arbitrary information.  So that's what B<IC::Component> att
   use Moose;
   extends qw(IC::Controller);
   use MyApp::Component::Widget;
-  
+
   sub some_action {
       $self = shift;
       # set some templating attribute based on the component...
@@ -244,7 +244,7 @@ details.
 =item B<content( %parameters )>
 
 The primary means of working with a component as a consumer, B<content()> does whatever
-it is that the component does and returns the result (which is presumably content to 
+it is that the component does and returns the result (which is presumably content to
 return to the client, given the webappy nature of the framework).  The assumption is
 that the component does one thing and one thing only, and the particulars of how it should
 do said thing can be communicated entirely parameter entries (in I<%parameters>) specific
@@ -554,6 +554,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

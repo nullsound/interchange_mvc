@@ -4,9 +4,9 @@
 
 
 
-/** 
+/**
 *
-* Style the yui-dt-expandablerow-trigger column 
+* Style the yui-dt-expandablerow-trigger column
 *  from: http://s.standardpixel.com/proto/yuiexample/index.php?id=rowexp_complex
 *
 **/
@@ -30,7 +30,7 @@
 }
 */
 
-/** 
+/**
 *
 * Style the expansion row
 *  from: http://s.standardpixel.com/proto/yuiexample/index.php?id=rowexp_complex
@@ -68,7 +68,7 @@
   width:300px;
 }
 
-.yui-dt-expansion .yui-dt-liner th, .yui-dt-expansion .yui-dt-liner table td ul { 
+.yui-dt-expansion .yui-dt-liner th, .yui-dt-expansion .yui-dt-liner table td ul {
   padding:0;
-  margin:0; 
+  margin:0;
 }

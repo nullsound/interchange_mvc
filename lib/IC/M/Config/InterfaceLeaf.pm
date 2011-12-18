@@ -1,8 +1,8 @@
 package IC::M::Config::InterfaceLeaf;
-        
+
 use strict;
 use warnings;
-            
+
 use base qw( IC::Model::Rose::Object );
 
 __PACKAGE__->meta->setup(
@@ -13,7 +13,7 @@ __PACKAGE__->meta->setup(
         level         => { type => 'integer', not_null => 1 },
         branch        => { type => 'text', not_null => 1 },
         pos           => { type => 'integer', not_null => 1 },
-    ],      
+    ],
     foreign_keys => [
         parent => {
             class => 'IC::M::Config::InterfaceLeaf',
@@ -26,18 +26,18 @@ __PACKAGE__->meta->setup(
     # TODO: this is provided for in new RDBO's I believe
     #
     #view => '1',
-);          
+);
 
 __PACKAGE__->make_manager_package;
 
 sub manage_description {
-    my $self = shift; 
+    my $self = shift;
     return ($self->id || 'Unknown Config Interface Node Leaf');
-}       
-        
-1;      
-    
-__END__ 
+}
+
+1;
+
+__END__
 
 =pod
 
@@ -56,6 +56,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

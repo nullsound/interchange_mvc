@@ -12,16 +12,16 @@ Classes using mixins leveraging this code should implement two methods:
 
     _get_trigger_structure_method as passed in:
 
-        returns a structure that is a hash of hash refs where the keys of the 
-        outer hash represent statuses that an object is changing from, with 
-        the keys of the inner hash being statuses that an object is changing 
+        returns a structure that is a hash of hash refs where the keys of the
+        outer hash represent statuses that an object is changing from, with
+        the keys of the inner hash being statuses that an object is changing
         to whose value is callback subroutine to run when the transition occurs
 
 See _AdvancedStatus_MixIn and _AdvancedKind_MixIn for examples.
 
 =end description
 
-=cut 
+=cut
 
 package IC::M::_Dispatch_Triggers;
 
@@ -85,15 +85,15 @@ sub _change_value_with_trigger {
         }
 
         $self->add_action_log(
-            {   
+            {
                 action_code => ($args->{_action_code} ne '' ? $args->{_action_code} : 'change_value' . " ($args->{_field})"),
                 content     => $content,
                 details     => [
-                    {   
+                    {
                         ref_code => 'from',
                         value    => $self->$field,
                     },
-                    {   
+                    {
                         ref_code => 'to',
                         value    => $new_value,
                     },
@@ -143,7 +143,7 @@ sub _change_value_with_trigger {
     unless ($already_in_txn == -1) {
         $self->db->commit;
     }
-    
+
     return $return;
 }
 
@@ -168,6 +168,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

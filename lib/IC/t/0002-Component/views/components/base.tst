@@ -1,4 +1,4 @@
-<% 
+<%
   sub linky {
       my $obj = shift;
       return $obj if !ref($obj);

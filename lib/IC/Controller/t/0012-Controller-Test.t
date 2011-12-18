@@ -279,7 +279,7 @@ header_ok('Content-Type', 'header_ok() value check', 'text/plain');
 content_cmp_ok(
    '=~',
    qr/controller...foo/,
-   'content_cmp_ok() general content regex check', 
+   'content_cmp_ok() general content regex check',
 );
 
 status_cmp_ok(

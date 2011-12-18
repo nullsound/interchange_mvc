@@ -12,7 +12,7 @@
 -- GNU General Public License for more details.
 --
 -- You should have received a copy of the GNU General Public License
--- along with this program. If not, see: http://www.gnu.org/licenses/ 
+-- along with this program. If not, see: http://www.gnu.org/licenses/
 --
 BEGIN;
 set client_min_messages='ERROR';
@@ -31,12 +31,12 @@ CREATE TABLE ic_users (
     role_id                     INTEGER NOT NULL
                                     CONSTRAINT fk_role_id
                                     REFERENCES ic_roles(id)
-                                    ON DELETE RESTRICT 
+                                    ON DELETE RESTRICT
                                     ON UPDATE CASCADE,
     version_id                  INTEGER NOT NULL
                                     CONSTRAINT fk_version_id
                                     REFERENCES ic_user_versions(id)
-                                    ON DELETE RESTRICT 
+                                    ON DELETE RESTRICT
                                     ON UPDATE CASCADE,
     status_code                 VARCHAR(30) NOT NULL
                                     CONSTRAINT fk_status_code

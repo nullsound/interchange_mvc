@@ -42,12 +42,12 @@ A IC::Controller::Route::Object instance could express this as:
 	  controller => 'foo',
 	  action     => 'list',
   );
-  
+
   # Parse a path
   my $params = $obj->parse_path( 'foo/list/0001' );
   printf "Controller: %s Action: %s some_value: %s\n", @$params{qw(controller action some_value)};
   # prints "Controller: foo Action: list some_value: 0001"
-  
+
   # Build a path
   print $obj->generate_path( controller => 'foo', action => 'list', some_value => 256, );
   # prints "foo/list/256"
@@ -60,13 +60,13 @@ a more general-use pattern that would work with any number of controllers and ac
       pattern => ':controller/:action/:argument',
 	  controllers => \@known_controller_names,
   );
-  
+
   # get controller 'foo' action 'list' argument 'blah'
   $obj->parse_path( 'foo/list/blah' );
-  
+
   # get controller 'building', action 'exit', argument 'now'
   $obj->parse_path( 'building/exit/now' );
-  
+
   # get 'spam/eat/plateful'
   $obj->generate_path(
       controller => 'spam',
@@ -96,28 +96,28 @@ expresses those parameters.
 		  action   => 'index',  # 'action' will default to 'index' if not provided
 	  },
   );
-  
+
   # get controller 'a', action 'b', argument 'c',
   $obj->parse_path( 'a/b/c' );
 
   # get controller 'foo', action 'bar', no argument.
   $obj->parse_path( 'foo/bar' );
-  
+
   # get controller 'test', action 'index', no argument
   $obj->parse_path( 'test' );
-  
+
   # get path 'a/b/c',
   $obj->generate_path( controller => 'a', action => 'b', argument => 'c', );
-  
+
   # get path 'foo/bar' as no argument is provided and so third segment isn't necessary
   $obj->generate_path( controller => 'foo', action => 'bar', );
-  
+
   # get path 'test', as no action or argument are provided
   $obj->generate_path( controller => 'test');
-  
+
   # similarly, get path 'test' because action provided matches the default
   $obj->generate_path( controller => 'test', action => 'index', );
-  
+
   # get 'me/index/you'; even though the action is the default, it is only possible
   # for the path to express the argument if the action is expressed as well.
   $obj->generate_path( controller => 'me', argument => 'you', );
@@ -133,16 +133,16 @@ specified in the B<defaults> hash.
 	  controllers => \@known_controller_names,
 	  defaults    => { action => 'index', },
   );
-  
+
   # get controller 'a', action 'b', segments [qw( c d e )]
   $obj->parse_path( 'a/b/c/d/e' );
-  
+
   # get controller 'foo', action 'index', segments []
   $obj->parse_path( 'foo' );
-  
+
   # get path 'foo/bar/blah/blee/blue'
   $obj->generate_path( controller => 'foo', action => 'bar', segments => [qw(blah blee blue)], );
-  
+
   # get path 'cow/moo'
   $obj->generate_path( controller => 'cow', action =>' moo', segments => [] );
 
@@ -159,15 +159,15 @@ must all be present).
   $obj->defaults( { action => 'list', } );
   # get controller 'test' action 'list'
   $obj->parse_path( 'root/test' );
-  
+
   # get path 'root/cow/moo'
   $obj->generate_path( controller => 'cow', action => 'moo' );
-  
+
   # and, to illustrate the issue of literals and optional parameters... (keeping the same defaults)
   $obj->pattern( ':action/root/:controller' );
   # get path 'bar/root/foo'
   $obj->generate_path( controller => 'foo', action => 'bar', );
-  
+
   # get path 'list/root/item'; though 'list' is the default action, the literal segment 'root'
   # requires that the action be fully expressed.
   $obj->generate_path( controller => 'item' );
@@ -193,7 +193,7 @@ annoying impediments to RESTful design.
 	  method => 'get',
 	  action => 'show_by_id',
   );
-  
+
   $write = IC::Controller::Route::Object->new(
       pattern     => ':controller/:id',
 	  controllers => \@known_controller_names,
@@ -203,13 +203,13 @@ annoying impediments to RESTful design.
 
   # controller 'product' action 'show_by_id' id 'foo'
   $read->parse_path( 'product/foo', ); # 'get' is the default request method
-  
+
   # undefined!
   $read->parse_path( 'product/foo', 'post' );
-  
+
   # also undefined! (again, 'get' is the default method type)
   $write->parse_path( 'product/foo', );
-  
+
   # controller 'product' action 'edit_by_id' id 'foo'
   $write->parse_path( 'product/foo', 'post' );
 
@@ -599,7 +599,7 @@ sub generate_path {
 	}
 
 	my $method = delete $options{method} || 'get';
-	
+
 	return undef
 		if $self->method
 			and $self->method !~ /^$method$/i
@@ -689,7 +689,7 @@ sub generate_path {
 				$error++; # unless $has_default->($component) or $component->[$ARRAY];
 				last;
 			}
-			
+
 			if ($component->[$ARRAY]) {
 #printf STDERR "generate_path: component is an array\n";
 				if (ref $option eq 'ARRAY') {
@@ -736,6 +736,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

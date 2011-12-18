@@ -44,10 +44,10 @@ class_has '_field_adjustments'         => ( is => 'ro', default => undef );
 class_has '_list_paging_provider'      => ( is => 'ro', default => 'server' );
 class_has '_list_page_count'           => ( is => 'ro', default => 25 );
 class_has '_list_cols'                 => (
-    is      => 'ro', 
+    is      => 'ro',
     default => sub {
         [
-            { 
+            {
                 display         => 'Description',
                 method          => 'manage_description',
                 parser          => 'string',
@@ -153,7 +153,7 @@ sub set_response {
             list_paginated   => 'IC::C::Manage::Component::FunctionResult::ListPaginated',
         };
         if (exists $component_class->{$args->{kind}}) {
-            my $component = $component_class->{$args->{kind}}->new( 
+            my $component = $component_class->{$args->{kind}}->new(
                 controller => $self->_controller,
                 context    => $args->{context},
             );
@@ -392,7 +392,7 @@ sub _object_manage_function_link {
         function => $self->_func_prefix . $action,
         query    => {
             (
-                map { 
+                map {
                     my $val;
                     if ($invocant->can($_)) {
                         $val = $invocant->$_;
@@ -403,7 +403,7 @@ sub _object_manage_function_link {
                     else {
                         IC::Exception->throw( "No value found for pk field: $_" );
                     }
-    
+
                     "_pk_$_" => $val
                 } @{ $invocant->meta->primary_key_columns }
             ),
@@ -575,7 +575,7 @@ sub _process_search_by {
                 $value = '%' . $cgi->{$field} . '%';
             }
 
-            push @return, ( 
+            push @return, (
                 $field => {
                     $operator => $value,
                 },
@@ -589,9 +589,9 @@ sub _process_search_by {
 sub _goto_detail_form {
     my $self = shift;
     my $args = { @_ };
-    
+
     my $_func_prefix = $self->_func_prefix;
-    
+
     my %form_action_args;
     if (defined $args->{form_action_args}) {
         %form_action_args = %{ $args->{form_action_args} };
@@ -689,7 +689,7 @@ sub _common_list {
             push @$content, "<td class=\"list_table_title_cell\">List All</td>";
             push @$content, "<td class=\"list_table_datum_cell_centered\">";
             push @$content, $self->manage_function_link(
-                step       => $self->_step + 1, 
+                step       => $self->_step + 1,
                 click_text => $total,
                 query      => {
                     mode => 'listall',
@@ -717,7 +717,7 @@ sub _common_list {
                         push @$content, "<tr>";
                         push @$content, "<td class=\"list_table_datum_cell\">";
                         push @$content, $self->manage_function_link(
-                            step       => $self->_step + 1, 
+                            step       => $self->_step + 1,
                             click_text => $name,
                             query      => {
                                 mode        => 'list',
@@ -750,7 +750,7 @@ sub _common_list {
                         push @$content, "<tr>";
                         push @$content, "<td class=\"list_table_datum_cell\">";
                         push @$content, $self->manage_function_link(
-                            step       => $self->_step + 1, 
+                            step       => $self->_step + 1,
                             click_text => $name,
                             query      => {
                                 mode        => 'list',
@@ -781,7 +781,7 @@ sub _common_list {
                         push @$content, "<tr>";
                         push @$content, "<td class=\"list_table_datum_cell\">";
                         push @$content, $self->manage_function_link(
-                            step       => $self->_step + 1, 
+                            step       => $self->_step + 1,
                             click_text => $name,
                             query      => {
                                 mode        => 'list',
@@ -915,7 +915,7 @@ sub _common_list {
             $context->{headers} = $headers;
             $context->{fields}  = $fields;
 
-            my $functions = { 
+            my $functions = {
                 $prefix.'Properties' => { display => 'Edit' },
                 $prefix.'Drop'       => { display => 'Drop' },
                 $prefix.'DetailView' => { display => 'Detail' },
@@ -1092,7 +1092,7 @@ sub _common_list_data_obj {
             };
 
             my $prefix = $self->_func_prefix;
-            my $functions = [ 
+            my $functions = [
                 {
                     code    => $prefix.'Properties',
                     display => 'Edit',
@@ -1232,7 +1232,7 @@ sub _common_list_data_obj {
 
             # TODO: this could be done on the client side via a formatter
             my $prefix = $self->_func_prefix;
-            my $functions = [ 
+            my $functions = [
                 {
                     code    => $prefix.'DetailView',
                     display => 'Detail',
@@ -1494,7 +1494,7 @@ sub _common_properties {
 
             # TODO: set a message that the record was created
             #       to be displayed on the detail view
-            
+
             # see if this load is needed when adding
             $object->load;
         }
@@ -2150,7 +2150,7 @@ sub _common_properties_unlink {
 #
 sub _common_drop {
     my $self = shift;
-    
+
     my $_object_name = $self->_model_display_name;
     my $object       = $self->_common_implied_object;
 
@@ -2205,7 +2205,7 @@ sub _common_drop {
 #
 sub _common_drop_data_obj {
     my $self = shift;
-    
+
     my $params = $self->_controller->parameters;
     $params->{_format} ||= 'json';
 
@@ -2260,7 +2260,7 @@ sub _common_detail_view {
     $self->set_title("$_object_name Detail", $object);
 
     my $subtitle = '';
-    
+
     my $list_link = $self->manage_function_link(
         method     => 'List',
         click_text => "[&nbsp;List&nbsp;$_object_name_plural&nbsp;]",
@@ -2272,22 +2272,22 @@ sub _common_detail_view {
     $self->set_subtitle($subtitle);
 
     # TODO: test to see if we still need to do stringification
-    
+
     my $pk_settings = [];
     for my $pk_field (@pk_fields) {
-        push @$pk_settings, { 
+        push @$pk_settings, {
             # the following forces stringification
             # which was necessary to prevent an issue
-            # where viewing the detail page caused 
+            # where viewing the detail page caused
             # the user to get logged out
-            field => "$pk_field", 
+            field => "$pk_field",
             value => $object->$pk_field,
         };
     }
     if (@$pk_settings) {
         $context->{pk_settings} = $pk_settings;
     }
-     
+
     my @auto_fields = qw(date_created last_modified created_by modified_by);
     my $auto_settings = [];
     for my $field (@auto_fields) {
@@ -2298,12 +2298,12 @@ sub _common_detail_view {
                 $value = $value_obj->display_label;
             }
         }
-        push @$auto_settings, { 
+        push @$auto_settings, {
             # the following forces stringification
             # which was necessary to prevent an issue
-            # where viewing the detail page caused 
+            # where viewing the detail page caused
             # the user to get logged out
-            field => "$field", 
+            field => "$field",
             value => "$value",
         };
     }
@@ -2329,11 +2329,11 @@ sub _common_detail_view {
                 if (defined $fo_manage_class) {
                     push @fo_fields, keys %{ $fk->key_columns };
 
-                    push @$foreign_objects, { 
+                    push @$foreign_objects, {
                         #
                         # the following forces stringification
                         # which was necessary to prevent an issue
-                        # where viewing the detail page caused 
+                        # where viewing the detail page caused
                         # the user to get logged out
                         #
                         field => $fo_manage_class->_model_display_name,
@@ -2363,7 +2363,7 @@ sub _common_detail_view {
         my $other_setting_ref = {
             # the following forces stringification
             # which was necessary to prevent an issue
-            # where viewing the detail page caused 
+            # where viewing the detail page caused
             # the user to get logged out
             field => "$field",
         };
@@ -2432,7 +2432,7 @@ sub _common_detail_view {
     push @$action_links, { html_link => $self->_object_manage_function_link('Drop', $object, label => "Drop $_object_name") };
 
     if ($self->can('_detail_generic_hook')) {
-        my $content = { 
+        my $content = {
             left         => [],
             right        => [],
             bottom       => [],
@@ -2683,8 +2683,8 @@ sub _common_detail_data_obj {
     my $pk_settings = [];
     for my $pk_field (@pk_fields) {
         push @pk_field_names, $pk_field->name;
-        push @$pk_settings, { 
-            field => $pk_field->name, 
+        push @$pk_settings, {
+            field => $pk_field->name,
             value => $object->$pk_field . '',
         };
     }
@@ -3048,7 +3048,7 @@ sub check_priv {
 }
 
 #
-# takes a set of named args, specifically a list of fields that we want to display 
+# takes a set of named args, specifically a list of fields that we want to display
 # in a common key/value pair manner and the object used to derive the values
 #
 sub _fields_to_kv_defs {
@@ -3121,7 +3121,7 @@ sub _fields_to_kv_defs {
 }
 
 #
-# takes a set of named args, specifically a list of fields that we want form 
+# takes a set of named args, specifically a list of fields that we want form
 # definitions for and an object that should be used for determining values
 #
 sub _fields_to_field_form_defs {
@@ -3169,10 +3169,10 @@ sub _fields_to_field_form_defs {
         # not be editable, this can be overridden by specifying an is_editable adjustment
         #
         next if (
-            $field_name eq 'id' 
+            $field_name eq 'id'
             and $field->is_primary_key_member
             and $field->type eq 'serial'
-            and not defined $adjust->{can_edit} 
+            and not defined $adjust->{can_edit}
         );
 
         #
@@ -3290,6 +3290,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -8,7 +8,7 @@
                         <%= $element->content %>
                     <% } else { %>
                         <%= $element %>
-                    <% } %> 
+                    <% } %>
                 <% } %>
             </td>
         <% } %>

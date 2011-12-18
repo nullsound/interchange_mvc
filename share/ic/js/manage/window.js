@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -20,9 +20,9 @@ YUI.add(
     function (Y) {
 
         var MW = Y.Base.create (
-            "ic_manage_window",     // module identifier  
-            Y.Base,                 // what to extend     
-            [Y.IC.HistoryManager],  // classes to mix in  
+            "ic_manage_window",     // module identifier
+            Y.Base,                 // what to extend
+            [Y.IC.HistoryManager],  // classes to mix in
             {                       // overrides/additions
 
                 // i'm using the following as a sort of cache.
@@ -38,8 +38,8 @@ YUI.add(
                 // the above widget containers
                 _div_cache:       {},
 
-                // a saved callback to be executed when 
-                //  the center layout (which is dynamic) 
+                // a saved callback to be executed when
+                //  the center layout (which is dynamic)
                 //  has rendered
                 _center_layout_onrender_callback:   null,
 
@@ -66,20 +66,20 @@ YUI.add(
 
                     this.after('stateChange', this._afterStateChange);
                     Y.on(
-                        'history-lite:change', 
+                        'history-lite:change',
                         Y.bind(this._onHistoryChange, this)
                     );
                     var rh = this.getRelaventHistory();
                     if (!rh.lc) rh = {lc: 'dash'};
                     this.set('state', rh);
 
-                    // listen for widget loaded events 
+                    // listen for widget loaded events
                     //  and decorate our layout to match the contents
-                    Y.on("manageFunctionList:tablerendered", 
+                    Y.on("manageFunctionList:tablerendered",
                          Y.bind(this.onCheckFitness, this));
-                    Y.on("manageFunctionList:tablerendered", 
+                    Y.on("manageFunctionList:tablerendered",
                          Y.bind(this._listenToTheList, this));
-                    Y.on("manageFunctionDetail:tabsrendered", 
+                    Y.on("manageFunctionDetail:tabsrendered",
                          Y.bind(this._fitDetailViewToUnit, this));
                 },
 
@@ -112,7 +112,7 @@ YUI.add(
                     var widget = container.get('current');
                     var layout_unit = container.get('layout_unit');
                     // Y.log(widget);
-                    if (widget && widget.getHeaderText && 
+                    if (widget && widget.getHeaderText &&
                         (widget.getHeaderText() !== null)) {
                         layout_unit.set('header', widget.getHeaderText());
                     }
@@ -131,7 +131,7 @@ YUI.add(
                     var clip = Y.one(unit._clip);
                     if (!Y.one('span.clip-header')) {
                         clip.append(
-                            '<span class="clip-header">Click to expand ' + 
+                            '<span class="clip-header">Click to expand ' +
                                 o.expand_what + '.</span>'
                         );
                     }
@@ -143,7 +143,7 @@ YUI.add(
                     // build the main layout
                     this._buildOuterLayout('outer');
                     this._layouts['outer'].on(
-                        'render', 
+                        'render',
                         Y.bind(this._onOuterLayoutRender, this, lc)
                     );
                     this._layouts['outer'].render();
@@ -326,12 +326,12 @@ YUI.add(
 
                     if (center_layout === 'dash') {
                         buildCenterLayout = this._buildDashLayout;
-                        onCenterLayoutRender = 
+                        onCenterLayoutRender =
                             Y.bind(this._onDashLayoutRender, this);
                     }
                     else {
                         buildCenterLayout = this._buildDTDVLayout;
-                        onCenterLayoutRender = 
+                        onCenterLayoutRender =
                             Y.bind(this._onDTDVLayoutRender, this);
                     }
 
@@ -341,7 +341,7 @@ YUI.add(
                         'left'                    // new layout key
                     );
                     Y.bind(
-                        buildCenterLayout, 
+                        buildCenterLayout,
                         this,                     // context
                         this._layouts['outer'],   // parent layout
                         'center',                 // unit
@@ -350,11 +350,11 @@ YUI.add(
                     )();
 
                     this._layouts['left'].on(
-                        'render', 
+                        'render',
                         Y.bind(this._onLeftLayoutRender, this)
                     );
                     this._layouts['center'].on(
-                        'render', 
+                        'render',
                         onCenterLayoutRender
                     );
 
@@ -366,12 +366,12 @@ YUI.add(
                     // Y.log('window::_onLeftLayoutRender');
                     this._layouts['left'].removeListener('render');
                     this._initMainMenu(
-                        this._layouts['left'],  // layout 
+                        this._layouts['left'],  // layout
                         'top',                  // unit
                         'vertical'              // menu orientation
                     );
                     this._initQuickLinks(
-                        this._layouts['left'],  // layout 
+                        this._layouts['left'],  // layout
                         'center'                // unit
                     );
                 },
@@ -395,10 +395,10 @@ YUI.add(
                     if (o.container) {
                         o.container.set('layout', o.layout);
                         o.container.set('layout_unit', o.unit);
-                        // make sure the container 
+                        // make sure the container
                     }
                     else {
-                        // must be a bookmark initialization, 
+                        // must be a bookmark initialization,
                         //  so create the containers from history
                         o.creationFn();
                     }
@@ -407,7 +407,7 @@ YUI.add(
                 // Not the best name.
                 // First it clears the container's history, then
                 //  if the container's widgets are not hidden, this hides them,
-                //  which has the side effect of clearing their history. 
+                //  which has the side effect of clearing their history.
                 _clearContainer: function (ary) {
                     // Y.log('window::_clearContainer');
                     Y.each(ary, function (v) {
@@ -428,18 +428,18 @@ YUI.add(
 
                     // attach some event handlers
                     var top = layout.getUnitByPosition('top')
-                    top.subscribe('endResize', this._fitDatatableToUnit, 
+                    top.subscribe('endResize', this._fitDatatableToUnit,
                                   null, this);
-                    top.subscribe('endResize', this._fitDetailViewToUnit, 
+                    top.subscribe('endResize', this._fitDetailViewToUnit,
                                   null, this);
-                    layout.subscribe('resize', this._updateCenterUnitSizes, 
+                    layout.subscribe('resize', this._updateCenterUnitSizes,
                                      null, this);
                     top.subscribe('collapse', this._setCollapsedHeader, {
-                        layout: layout, 
-                        unit: 'top', 
+                        layout: layout,
+                        unit: 'top',
                         expand_what: 'record set'
                     }, this);
-                    
+
 
                     // restore our containers
                     if (this._div_cache['manage_datatable']) {
@@ -455,13 +455,13 @@ YUI.add(
 
                     // update container layout info, etc
                     this._prepareContainers({
-                        container: this._containers['dt'], 
+                        container: this._containers['dt'],
                         unit: layout.getUnitByPosition('top'),
                         layout: layout,
                         creationFn: Y.bind(this._createDataTableContainer, this)
                     });
                     this._prepareContainers({
-                        container: this._containers['dv'], 
+                        container: this._containers['dv'],
                         unit: layout.getUnitByPosition('center'),
                         layout: layout,
                         creationFn: Y.bind(this._createDetailViewContainer, this)
@@ -525,7 +525,7 @@ YUI.add(
                 _initQuickLinks: function (layout, unit) {
                     var ql_unit = layout.getUnitByPosition(unit);
                     this._containers['links'] = new Y.IC.ManageQuickLinks(
-                        {                            
+                        {
                             render_to: ql_unit.body.childNodes[0],
                             layout: this._layouts['left'],
                             layout_unit: ql_unit
@@ -533,12 +533,12 @@ YUI.add(
                     );
                 },
 
-                /* 
+                /*
                  *  Build the dashboard.  this is primative.
                  *  eventually we'll likely want a more complex layout
                  *  for the dashboard, and may load several widgets
                  *  into it.
-                 */ 
+                 */
                 _initDashboard: function (layout, unit) {
                     // Y.log('window::_initDashboard');
                     var center = layout.getUnitByPosition(unit);
@@ -573,15 +573,15 @@ YUI.add(
                         this
                     );
                     this._containers['dt'].on(
-                        "manageContainer:widgetshown", 
+                        "manageContainer:widgetshown",
                         Y.bind(this.updateHeaderText, this)
                     );
                     this._containers['dt'].on(
-                        "manageContainer:widgetmetadata", 
+                        "manageContainer:widgetmetadata",
                         Y.bind(this.updateHeaderText, this)
                     );
                     this._containers['dt'].on(
-                        "manageContainer:widgethidden", 
+                        "manageContainer:widgethidden",
                         Y.bind(this.clearHeaderText, this)
                     );
                 },
@@ -616,15 +616,15 @@ YUI.add(
                         }
                     );
                     this._containers['dv'].on(
-                        "manageContainer:widgetshown", 
+                        "manageContainer:widgetshown",
                         Y.bind(this.updateHeaderText, this)
                     );
                     this._containers['dv'].on(
-                        "manageContainer:widgetmetadata", 
+                        "manageContainer:widgetmetadata",
                         Y.bind(this.updateHeaderText, this)
                     );
                     this._containers['dv'].on(
-                        "manageContainer:widgethidden", 
+                        "manageContainer:widgethidden",
                         Y.bind(this.clearHeaderText, this)
                     );
 
@@ -656,7 +656,7 @@ YUI.add(
                     if (this.get('state.lc') !== 'dtmax') {
                         // Y.log('window::_onSubmenuMousedown - hiding current widgets');
                         // save a callback because the layout needs to be built/rendered first
-                        this._center_layout_onrender_callback = 
+                        this._center_layout_onrender_callback =
                             Y.bind(this._doSubmenuRequest, this, e);
                         // Y.log('window::_onSubmenuMousedown - setting state to dtmax');
                         this.set('state.lc', 'dtmax');
@@ -691,7 +691,7 @@ YUI.add(
                     // Y.log('window::_onDetailClick');
                     if (this.get('state.lc') !== 'dtdv') {
                         // save a callback, because the layout needs to be built/rendered first
-                        this._center_layout_onrender_callback = 
+                        this._center_layout_onrender_callback =
                             Y.bind(this._doDetailRequest, this, e);
                         // Y.log('window::_onDetailClick - setting state to dtdv');
                         this.set('state.lc', 'dtdv');
@@ -779,7 +779,7 @@ YUI.add(
                     // Y.log('window::_doDetailRequest');
                     var top = this._layouts['center'].getUnitByPosition("top");
 
-                    // shrink the top unit and show only 3 rows in the datatable, 
+                    // shrink the top unit and show only 3 rows in the datatable,
                     //  making room for the detail view without closing the datatable
                     top.set('height', 152);
 
@@ -822,31 +822,31 @@ YUI.add(
                         }
                         else if (div.hasChildNodes()) {
                             var tmp = Y.Node.create(empty);
-                            cache[id] = div.get('parentNode').replaceChild(tmp, div); 
+                            cache[id] = div.get('parentNode').replaceChild(tmp, div);
                         }
                     };
 
                     if (this._containers['dt']) {
                         createOrSaveContainer(
-                            'manage_datatable', 
+                            'manage_datatable',
                             this._div_cache
                         );
                     }
                     if (this._containers['dv']) {
                         createOrSaveContainer(
-                            'manage_detail', 
+                            'manage_detail',
                             this._div_cache
                         );
                     }
                     if (this._containers['dash']) {
                         createOrSaveContainer(
-                            'manage_dashboard', 
+                            'manage_dashboard',
                             this._div_cache
                         );
                     }
                 },
 
-                
+
                 /*
                  * the Layout Manager was having some trouble with
                  * dynamic inner layouts, leaving extra dom nodes all
@@ -890,7 +890,7 @@ YUI.add(
                         if ( ! this._layouts['outer'] ) {
                             this._buildOuterLayout('outer');
                             this._layouts['outer'].on(
-                                'render', 
+                                'render',
                                 Y.bind(this._onOuterLayoutRender, this, state.lc)
                             );
                             this._layouts['outer'].render();
@@ -915,7 +915,7 @@ YUI.add(
                                 state.lc                  // version
                             )();
                             this._layouts['center'].on(
-                                'render', 
+                                'render',
                                 Y.bind(onCenterLayoutRender, this)
                             );
                             this._layouts['center'].render();
@@ -930,7 +930,7 @@ YUI.add(
         var ManageWindow = function() {
             var mw = new MW({prefix: '_mw'});
             this.instance = null;
-            
+
             var getInstance = function () {
                 if (!this.instance) {
                     this.instance = createInstance();
@@ -946,7 +946,7 @@ YUI.add(
 
             return getInstance();
         };
-        
+
         Y.namespace("IC");
         Y.IC.ManageWindow = ManageWindow;
     },
