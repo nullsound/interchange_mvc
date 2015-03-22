@@ -45,7 +45,7 @@ the desired view file will be used.
 
 =item B<default_extension>
 
-The default filename extension to attempt to use on any view file (used if the view file requested does not have a 
+The default filename extension to attempt to use on any view file (used if the view file requested does not have a
 specified extension).  If the file with the default extension exists, then it will be used.  Otherwise, the extensions
 known to View::Base will be tried in alphabetical order until a view file is found.
 
@@ -132,7 +132,7 @@ sub get_view_object {
 			if $class->handles( $extension )
 		;
 	}
-	
+
 	return;
 }
 
@@ -239,6 +239,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

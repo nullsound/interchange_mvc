@@ -12,19 +12,19 @@
 -- GNU General Public License for more details.
 --
 -- You should have received a copy of the GNU General Public License
--- along with this program. If not, see: http://www.gnu.org/licenses/ 
+-- along with this program. If not, see: http://www.gnu.org/licenses/
 --
 BEGIN;
 SET client_min_messages='ERROR';
 
 CREATE VIEW ic_config_interface_structure_tree_view AS
-    SELECT 
-        tree.id, 
-        tree.parent_id, 
-        (tree."level" - 1) AS "level", 
-        tree.branch, 
-        tree.pos 
-    FROM 
+    SELECT
+        tree.id,
+        tree.parent_id,
+        (tree."level" - 1) AS "level",
+        tree.branch,
+        tree.pos
+    FROM
         connectby(
             'ic_config_interface_structure'::text,
             'id'::text,

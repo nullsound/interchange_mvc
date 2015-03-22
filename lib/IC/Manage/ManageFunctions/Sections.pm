@@ -47,7 +47,7 @@ sub _properties_form_hook {
 
     my $status_options = [];
     for my $status (keys %$statuses) {
-        push @$status_options, { 
+        push @$status_options, {
             value    => $status,
             selected => ((defined $values->{status} and $values->{status} eq $status) ? ' selected="selected"' : ''),
             display  => $statuses->{$status},
@@ -85,6 +85,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

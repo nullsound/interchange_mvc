@@ -137,7 +137,7 @@ is_deeply(
         map {
             [map { [sort {$a <=> $b} @$_] } gather_references($_)]
         }
-        sort {$a <=> $b} 
+        sort {$a <=> $b}
         grep { !keys(%{$referenced{$_}}) }
         keys %referenced
     ],
@@ -156,7 +156,7 @@ is_deeply(
         map {
             [map { [sort {$a <=> $b} @$_] } gather_referencers($_)]
         }
-        sort {$a <=> $b} 
+        sort {$a <=> $b}
         grep { !keys(%{$map{$_}}) }
         keys %map
     ],

@@ -27,7 +27,7 @@ use base ($class);
         push @stack, 'validate_priority';
         return 1;
     }
-    
+
     sub _log {
         my $self = shift;
         push @stack, '_log';

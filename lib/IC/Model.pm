@@ -88,7 +88,7 @@ sub update {
 
     sub manage_class {
         my $self = shift;
-    
+
         my $class = ref $self || $self;
         return $_manage_class_cache{ $class } if defined $_manage_class_cache{ $class };
 
@@ -109,7 +109,7 @@ sub update {
         }
         $_manage_class_cache{ $class } ||= undef;
 
-        return $_manage_class_cache{ $class }; 
+        return $_manage_class_cache{ $class };
     }
 
     sub _manage_class {
@@ -126,7 +126,7 @@ sub update {
                 /ss$/ ? s/$/es/  : # pluralize -ss as -sses and skip the other checks
                 /us$/ ? s/$/es/  : # pluralize -us as -uses and skip the other checks
                 !/s$/ && s/$/s/  ; # if we end in -s, don't pluralize, otherwise add an -s
-                $_ 
+                $_
             } split '::', $class;
 
             return $prefix . '::Manage::' . $class;
@@ -230,7 +230,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut
 

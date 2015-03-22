@@ -1,4 +1,4 @@
-<form 
+<form
     id="account_maintenance_form"
     method="post"
     action="<%=

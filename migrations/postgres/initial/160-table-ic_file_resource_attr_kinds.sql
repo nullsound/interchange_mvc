@@ -12,7 +12,7 @@
 -- GNU General Public License for more details.
 --
 -- You should have received a copy of the GNU General Public License
--- along with this program. If not, see: http://www.gnu.org/licenses/ 
+-- along with this program. If not, see: http://www.gnu.org/licenses/
 --
 BEGIN;
 SET client_min_messages='ERROR';
@@ -27,7 +27,7 @@ CREATE TABLE ic_file_resource_attr_kinds (
 
     display_label character varying(100) NOT NULL,
     description text NOT NULL,
-    
+
     CONSTRAINT code_valid CHECK (((length((code)::text) > 0) AND ((code)::text = btrim((code)::text))))
 );
 

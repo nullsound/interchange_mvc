@@ -1181,7 +1181,7 @@ sub process_request {
         confess "process_request() requested an unknown controller ('$path_params->{controller}')!"
             unless defined $controller
         ;
-        
+
         # Now the instantiated controller should be the error handler
         $error_invocant = $controller;
 
@@ -1196,12 +1196,12 @@ sub process_request {
                 headers	=> $headers,
             )
         );
-            
+
         $action_name = $path_params->{action};
         my $caches_page = $controller->caches_page( $action_name );
         # bind the helpers to the current controller...
         IC::Controller::HelperBase->bind_to_controller( $controller );
-        
+
         if (! ($caches_page and $controller->check_page_cache( $path_params )) ) {
 
             $controller->prepare_parameters( $path_params );
@@ -1302,6 +1302,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

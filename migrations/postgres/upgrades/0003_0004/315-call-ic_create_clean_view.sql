@@ -12,18 +12,18 @@
 -- GNU General Public License for more details.
 --
 -- You should have received a copy of the GNU General Public License
--- along with this program. If not, see: http://www.gnu.org/licenses/ 
+-- along with this program. If not, see: http://www.gnu.org/licenses/
 --
 BEGIN;
 SET client_min_messages='ERROR';
 
-SELECT 
-    ic_create_clean_view(table_name::TEXT) 
-FROM 
+SELECT
+    ic_create_clean_view(table_name::TEXT)
+FROM
     information_schema.tables
-WHERE 
+WHERE
     table_schema = 'public'
-    AND 
+    AND
     table_type = 'BASE TABLE'
 ;
 

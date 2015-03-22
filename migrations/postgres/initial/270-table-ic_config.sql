@@ -12,7 +12,7 @@
 -- GNU General Public License for more details.
 --
 -- You should have received a copy of the GNU General Public License
--- along with this program. If not, see: http://www.gnu.org/licenses/ 
+-- along with this program. If not, see: http://www.gnu.org/licenses/
 --
 BEGIN;
 SET client_min_messages='ERROR';
@@ -37,9 +37,9 @@ CREATE TABLE ic_config (
     UNIQUE(setting_code, level_code, ref_obj_pk)
 );
 
-ALTER TABLE ONLY ic_config  
-    ADD CONSTRAINT fk_setting_code_level_code 
-    FOREIGN KEY (setting_code, level_code) 
+ALTER TABLE ONLY ic_config
+    ADD CONSTRAINT fk_setting_code_level_code
+    FOREIGN KEY (setting_code, level_code)
     REFERENCES ic_config_setting_level_map(setting_code, level_code)
     ON UPDATE CASCADE
     ON DELETE RESTRICT

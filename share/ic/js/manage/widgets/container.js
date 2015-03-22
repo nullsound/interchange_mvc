@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -79,7 +79,7 @@ YUI.add(
 
                 renderUI: function () {
                     // Y.log('container::renderUI');
-                    /* 
+                    /*
                        currently, the container doesn't add any
                        markup.  it will attach widgets, but that is
                        done elsewhere.  If in the future if the
@@ -134,13 +134,13 @@ YUI.add(
 
                 hideCurrentWidget: function () {
                     var widget = this.get('current');
-                    if (widget) 
+                    if (widget)
                         this._hideWidget(widget);
                 },
 
                 showCurrentWidget: function () {
                     var widget = this.get('current');
-                    if (widget) 
+                    if (widget)
                         this._showWidget(widget);
                 },
 
@@ -155,7 +155,7 @@ YUI.add(
                 _doLoadWidget: function (config) {
                     // Y.log("container::_doLoadWidget");
                     /*
-                    Y.log("kind: " + config.kind + 
+                    Y.log("kind: " + config.kind +
                           " sub_kind: " + config.sub_kind +
                           " args: " + config.args);
                     */
@@ -169,7 +169,7 @@ YUI.add(
                         var key;
                         // Y.log("code: " + code + "  " +
                         //       "addtl_args: " + addtl_args);
-                        /* 
+                        /*
                          * List and Detail widgets use addtl_args
                          * differently.  For a List, the extra args
                          * define filter (or search) params.  For a
@@ -184,7 +184,7 @@ YUI.add(
                         if (config.sub_kind === "list") {
                             key = code;
                             if (! this._cache[key]) {
-                                this._cache[key] = 
+                                this._cache[key] =
                                     new Y.IC.ManageFunctionExpandableList(
                                         {
                                             code: code,
@@ -194,7 +194,7 @@ YUI.add(
                                         }
                                     );
                                 this._cache[key].render(
-                                    this.get("contentBox") 
+                                    this.get("contentBox")
                                 );
                             }
                             else {
@@ -206,7 +206,7 @@ YUI.add(
                         else if (config.sub_kind === "detail") {
                             key = config.args;
                             if (! this._cache[key]) {
-                                this._cache[key] = 
+                                this._cache[key] =
                                     new Y.IC.ManageFunctionDetail(
                                         {
                                             code: code,
@@ -251,7 +251,7 @@ YUI.add(
                     } catch (err) {
                         Y.log(err); // widget is probably null or not a Widget subclass
                         // NA: i think we should write an error message to the screen,
-                        //     reload the previous widget, 
+                        //     reload the previous widget,
                         //     and remove this widget from the cache.
                         //     maybe just go back one entry in the history?
                     }

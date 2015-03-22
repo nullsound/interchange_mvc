@@ -17,7 +17,7 @@ use base qw(Exporter IC::Controller::HelperBase);
 
 # Truly lame.
 Vend::Util::setup_escape_chars;
- 
+
 @IC::Controller::Route::Helper::EXPORT = qw(
     url
     cache_helper
@@ -38,7 +38,7 @@ sub url {
             method
         )}
     ;
-    
+
     if (defined $binding) {
         # another exception object needed!
         croak 'url() can only accept binding objects within the "binding" parameter!'
@@ -52,9 +52,9 @@ sub url {
         $get = $binding->get_parameters;
         $handler = $binding->route_handler;
     }
-    
+
     my $current_controller = __PACKAGE__->controller;
-    
+
     $handler = (
         defined($current_controller) && defined($current_controller->route_handler)
             ? $current_controller->route_handler
@@ -63,7 +63,7 @@ sub url {
         unless defined $handler
             and ref($handler) || length($handler)
     ;
-    
+
     if (! defined $url ) {
         $controller = $current_controller->registered_name
             if ! defined $controller or ! length $controller
@@ -91,7 +91,7 @@ sub url {
             unless defined $options{add_dot_html}
         ;
     }
-    
+
     if (ref $get eq 'HASH' and %$get) {
         my @form;
         while (my ($key, $val) = each %$get) {
@@ -109,7 +109,7 @@ sub url {
         $get = undef;
         delete $options{form};
     }
-    
+
     # ouch!  Seriously lame, but only option to be usable outside full IC process...
     $Global::UrlJoiner ||= '&';
     return Vend::Interpolate::tag_area( $url, undef, \%options, );
@@ -118,8 +118,8 @@ sub url {
 sub cache_helper {
     my ($a, $b, $c, $day, $mon, $year) = localtime;
     my $date = ($year + 1900) . $mon . $day;
-    
-    return "x=$date";    
+
+    return "x=$date";
 }
 
 1;
@@ -138,7 +138,7 @@ Provides the B<url()> function for generating URLs within an MVC-enabled Interch
 built upon the Interchange core B<area> tag, meaning that the URL generation is consistent with
 established practice (except as otherwise documented here), and further reliant upon the MVC
 routing objects (B<IC::Controller::Route>) for constructing paths within the MVC object family.
-Also provides the B<cache_helper()> function for use in preventing old cached js and css and the 
+Also provides the B<cache_helper()> function for use in preventing old cached js and css and the
 B<image_exists()>, and B<get_item_image_url> functions as replacement subsets of the old ITL image tag.
 
 =head1 USAGE
@@ -151,7 +151,7 @@ and are specified via a hash instead of a stringified hash mess.
 
   # import url() into our current package.
   use IC::Controller::Route::Helper;
-  
+
   # print a URL for controller 'foo' action 'test'
   # with URL params item_id => 1 and show => 1,
   # which, with appropriate routing, might look something like:
@@ -165,7 +165,7 @@ and are specified via a hash instead of a stringified hash mess.
       },
       no_session  => 1,
   );
-  
+
   # Put some GET variables in there, so we might get something like:
   # http://your.domain.com/cgi-bin/catalog/foo/test?moose=bullwinkle&squirrel=rocky
   print url(
@@ -177,13 +177,13 @@ and are specified via a hash instead of a stringified hash mess.
       },
       no_session => 1,
   );
-  
+
   # Or just a standard Interchange page, no MVC at all...
   # http://your domain.com/cgi-bin/catalog/some_page
   print url(
       href => 'some_page',
   );
-  
+
   # and, of course, full URLs are unchanged; this prints:
   # http://www.google.com
   print url(
@@ -283,7 +283,7 @@ as well as flags like I<secure> and so on.
 
 =item B<cache_helper>
 
-This poorly-named function returns a string with the current datestamp to aid in preventing the 
+This poorly-named function returns a string with the current datestamp to aid in preventing the
 caching of old javascript and css files for more than a day.
 A better solution in the future would be to increase the granularity of this datestamp, and
 to update it specific to the resource being included.
@@ -305,6 +305,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

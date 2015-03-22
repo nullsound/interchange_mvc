@@ -31,16 +31,16 @@ logic.
  use base qw/IC::Log::Base/;
  use strict;
  use warnings;
- 
+
  my $logfile = '/tmp/foo.log';
  open my $handle, '>', $logfile;
- 
+
  sub _log {
      my ($self, $level, $message) = @_;
      print $handle, $message;
      return 1;
- } 
- 
+ }
+
  1;
 
 The above example opens up a file '/tmp/foo.log' and implements the I<_log()>
@@ -66,13 +66,13 @@ but ensures that there's a trailing newline so the logfile looks better.
 With this in place, we can use our logger in this manner:
 
  use My::Logger;
- 
+
  my $logger = My::Logger->new;
  ...
  my $foo = 'blah';
  # send a debug message
  $logger->debug('The value of $foo is: %s', $foo);
-  
+
  # send an error message
  $logger->error('$bar is undefined!') if !defined($bar);
 
@@ -80,7 +80,7 @@ The resulting entries in the '/tmp/foo.log' file would look like:
 
  The value of $foo is: blah
  $bar is undefined!
- 
+
 
 This reflects the default message formatting of the logging mechanism, which is
 basically just I<sprintf> for whatever arguments are passed to the logging method.
@@ -111,7 +111,7 @@ instead look like:
 
  DEBUG: The value of $foo is: blah
  ERROR: $bar is undefined!
- 
+
 
 That's much clearer.
 
@@ -422,6 +422,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

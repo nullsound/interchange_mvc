@@ -68,18 +68,18 @@ access to the controller object and its attributes.
   use Exporter;
   use IC::Controller::HelperBase;
   use base qw(Exporter IC::Controller::HelperBase);
-  
+
   @My::Helpers::EXPORT = qw( get_happy );
-  
+
   sub get_happy {
       return
           unless defined __PACKAGE__->controller
           and defined __PACKAGE__->controller->request;
-          
+
       return 'happy!'
           if __PACKAGE__->controller->request->method eq 'get'
       ;
-  
+
       return 'sad';
   }
   1;
@@ -143,6 +143,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

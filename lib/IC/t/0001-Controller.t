@@ -393,7 +393,7 @@ $controller->request( $request_class->new(
 	cgi => {},
 	headers => {
 		REQUEST_METHOD => 'GET',
-	},	
+	},
 ) );
 $controller->prepare_parameters( { controller => 'test', action => 'verify', } );
 $controller->test( 'something' );

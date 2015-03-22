@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -20,9 +20,9 @@ YUI.add(
     function(Y) {
 
         var ManageTabPanel = Y.Base.create (
-            "ic_manage_tabpanel",         // module identifier  
-            Y.Plugin.WidgetIO,       // what to extend     
-            [                        // classes to mix in  
+            "ic_manage_tabpanel",         // module identifier
+            Y.Plugin.WidgetIO,       // what to extend
+            [                        // classes to mix in
                 Y.WidgetStdMod
             ],
             {                        // prototype overrides/additions
@@ -55,7 +55,7 @@ YUI.add(
 
                     var tab = this.get('host');
                     tab.on(
-                        'selectedChange', 
+                        'selectedChange',
                         Y.bind(this._afterSelectedChange, this)
                     );
                     tab.on('ready', Y.bind(this._onReady, this));
@@ -84,7 +84,7 @@ YUI.add(
                     this._bindUIStdMod();
                     this.populateTab(this);
                 },
-                
+
                 populateTab: function (tab) {
                     // Y.log('tabpanel::populateTab - label:' + this.get('label'));
 
@@ -108,12 +108,12 @@ YUI.add(
                     // Y.log('tabpanel::setContent');
                     try {
                         this.get('host').get('contentBox').setContent(content);
-                    } 
+                    }
                     catch (err) {
                         Y.log('setContent error!  No contentBox?');
                         // does this need to be fixed? it works anyway...
                     }
-                }, 
+                },
 
                 addContent: function (data) {
                     // Y.log('tabpanel::addContent - data');
@@ -132,7 +132,7 @@ YUI.add(
                         }
                         try {
                             config = Y.merge(
-                                { pk_settings: this.get('pk_settings') }, 
+                                { pk_settings: this.get('pk_settings') },
                                 renderer.config
                             );
                             renderer = new Y.IC[renderer.name](config);
@@ -189,7 +189,7 @@ YUI.add(
                     // expand the 'src' if there is no treeview
                     if (e.newVal) {
                         var cb = this.get('contentBox');
-                        if (cb && !cb.one('.yui3-treeviewlite')) { 
+                        if (cb && !cb.one('.yui3-treeviewlite')) {
                             // tab has been selected, and there is no treeview
                             if (this.get('uri')) {
                                 this.refresh();
@@ -234,7 +234,7 @@ YUI.add(
                             if (Y.Lang.isValue(v.related)) {
                                 li_class = 'yui3-treeviewlite-collapsed';
                                 exp_col = Y.IC.ManageTreeview.EXPAND_TEMPLATE +
-                                    ' | ' + 
+                                    ' | ' +
                                     Y.IC.ManageTreeview.COLLAPSE_TEMPLATE;
                             }
                             var label = Y.Node.create(
@@ -361,7 +361,7 @@ YUI.add(
                 _buildEmptyRelatedNode: function (data) {
                     return Y.Node.create(this.get('related_node_template'));
                 },
-                
+
                 _toggleLoadingClass: function(add) {
                     // noop
                 }

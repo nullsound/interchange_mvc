@@ -5,22 +5,22 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add("ic-manage-widget-function-expandable-list", function (Y) {
 
     Y.IC.ManageFunctionExpandableList = Y.Base.create(
-        "ic_manage_function_expandable_list",           // module identifier  
-        Y.IC.ManageFunctionList,                        // what to extend     
-        [],                                             // classes to mix in  
+        "ic_manage_function_expandable_list",           // module identifier
+        Y.IC.ManageFunctionList,                        // what to extend
+        [],                                             // classes to mix in
         {                                               // overrides/additions
 
         _fitted: false,
@@ -31,7 +31,7 @@ YUI.add("ic-manage-widget-function-expandable-list", function (Y) {
             Y.IC.ManageFunctionExpandableList.superclass._bindDataTableEvents.call(this);
             if (this.get('expandable')) {
                 this._data_table.on(
-                    'cellClickEvent', 
+                    'cellClickEvent',
                     this._data_table.onEventToggleRowExpansion);
             }
         },
@@ -43,9 +43,9 @@ YUI.add("ic-manage-widget-function-expandable-list", function (Y) {
                 if (oData) { //Row is closed
                     Y.one(cell_element).addClass("yui-dt-expandablerow-trigger");
                 }
-                el.innerHTML = oData; 
+                el.innerHTML = oData;
             };
-            
+
             if (this.get('expandable')) {
                 Y.each(this._meta_data.data_table_column_defs, function (v, i, ary) {
                     if (v.key === '_options') {
@@ -74,7 +74,7 @@ YUI.add("ic-manage-widget-function-expandable-list", function (Y) {
             );
 
             this._data_table.showTableMessage(
-                this._data_table.get("MSG_LOADING"), 
+                this._data_table.get("MSG_LOADING"),
                 YAHOO.widget.DataTable.CLASS_LOADING
             );
         },
@@ -151,7 +151,7 @@ YUI.add("ic-manage-widget-function-expandable-list", function (Y) {
                     this._fitted = false;
                     new_height = unit_height;
                     dt.set('height', (new_height - magic) + 'px');
-                    // Y.log('exited, no table to work with'); 
+                    // Y.log('exited, no table to work with');
                     return;
                 }
 
@@ -165,7 +165,7 @@ YUI.add("ic-manage-widget-function-expandable-list", function (Y) {
                 if (Number(this.get('state.results')) === this._rows &&
                     delta_height < row_height) {
                     this._fitted = true;
-                    // Y.log('exited, not worth the trouble'); 
+                    // Y.log('exited, not worth the trouble');
                     return;
                 }
 
@@ -210,7 +210,7 @@ YUI.add("ic-manage-widget-function-expandable-list", function (Y) {
         },
 
         _getNewRecords: function () {
-            // if there's a selected record, 
+            // if there's a selected record,
             //  calculate the recordOffset so that it
             //  becomes the top row of the new page
             var state = this.get('state');
@@ -257,10 +257,10 @@ YUI.add("ic-manage-widget-function-expandable-list", function (Y) {
             );
             widget.render(o.liner_element);
          }
-    }, 
+    },
     {
         NAME: 'ic_manage_widget_function_expandable_list',
-        ATTRS : {            
+        ATTRS : {
             expandable: {
                 value: true
             }

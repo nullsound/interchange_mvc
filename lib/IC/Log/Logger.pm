@@ -75,7 +75,7 @@ We might start with this:
  use IC::Log::Logger;
  use strict;
  use warnings;
- 
+
  sub new {
      my $class = shift;
      my $obj = {};
@@ -83,7 +83,7 @@ We might start with this:
      bless $obj, $class;
      return $obj;
  }
- 
+
  sub set_logger {
      my ($self, $logger) =  @_;
      die 'The logger specified is not a valid logger'
@@ -95,7 +95,7 @@ We might start with this:
      ;
      return $self->{_my_logger} = $logger;
  }
- 
+
  sub get_logger {
      my $self = shift;
      return $self->{_my_logger};
@@ -125,7 +125,7 @@ and then consider:
  my $widget = SuperKool::Widget->new;
  # any logging calls issued by the widget will use the default of B<IC::Log>.
  $widget->do_stuff_that_logs();
- 
+
  # now we set the logger attribute, and the same routine ends up using that logger
  # instead of the default.
  $widget->set_logger( IC::Log::AwesomeLogger->new );
@@ -272,6 +272,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

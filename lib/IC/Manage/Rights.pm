@@ -44,7 +44,7 @@ sub _properties_form_hook {
 
     my $right_types = $_right_type_class_mgr->get_objects;
     for my $element (sort { $a->code cmp $b->code || $a->target_kind_code cmp $b->target_kind_code } @$right_types) {
-        push @$right_type_options, { 
+        push @$right_type_options, {
             value    => $element->id,
             selected => ((defined $values->{right_type_id} and $values->{right_type_id} eq $element->id) ? ' selected="selected"' : ''),
             display  => $element->manage_description,
@@ -87,6 +87,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -51,7 +51,7 @@ sub _properties_form_hook {
     my $status_options = [];
     my $statuses = $_user_status_class_mgr->get_objects;
     for my $element (sort { $a->display_label cmp $b->display_label } @$statuses) {
-        push @$status_options, { 
+        push @$status_options, {
             value    => $element->code,
             selected => ((defined $values->{status_code} and $values->{status_code} eq $element->code) ? ' selected="selected"' : ''),
             display  => $element->display_label,
@@ -63,7 +63,7 @@ sub _properties_form_hook {
     my $time_zone_options = [];
     my $time_zones = $_time_zone_class_mgr->get_objects;
     for my $element (sort { $a->code cmp $b->code } @$time_zones) {
-        push @$time_zone_options, { 
+        push @$time_zone_options, {
             value    => $element->code,
             selected => ((defined $values->{time_zone_code} and $values->{time_zone_code} eq $element->code) ? ' selected="selected"' : ''),
             display  => $element->code,
@@ -76,7 +76,7 @@ sub _properties_form_hook {
 
     my $role_options = [];
     for my $element (sort { $a->code cmp $b->code } @$user_roles) {
-        push @$role_options, { 
+        push @$role_options, {
             value    => $element->id,
             selected => ((defined $values->{role_id} and $values->{role_id} == $element->id) ? ' selected="selected"' : ''),
             display  => $element->code,
@@ -129,7 +129,7 @@ sub _properties_action_hook {
         unless (defined $params->{password_hash_kind_code} and $params->{password_hash_kind_code} ne '') {
             IC::Exception->throw( 'Missing required value for password hash kind' );
         }
-        
+
         $params->{password} = IC::M::User->hash_password( $params->{new_password}, $params->{password_hash_kind_code} );
 
         delete @{$params}{qw( new_password con_password )};
@@ -197,6 +197,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -51,13 +51,13 @@ sub _list_0_hook {
 
     return;
 }
-    
+
 sub _search_by_form {
     my $self = shift;
     my $args = { @_ };
-    
-    my $_func_prefix = $self->_func_prefix; 
-    
+
+    my $_func_prefix = $self->_func_prefix;
+
     my @html;
 
     my $form_action_uri = $self->manage_function_uri(
@@ -77,7 +77,7 @@ sub _search_by_form {
         push @html, "</td>\n";
         push @html, "</tr>\n";
     }
-    
+
     return @html;
 }
 
@@ -107,7 +107,7 @@ sub _detail_generic_hook {
     my $content = shift;
 
     my ($left, $right, $bottom, $links) = @$content{ qw(left right bottom action_links) };
-    
+
     for ($left) {
         push @$_, '<table class="detail_sub_table">';
         push @$_, '<tr>';
@@ -346,6 +346,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -89,7 +89,7 @@ of 'foo':
  package App::Foo;
  use IC::Controller;
  use base qw/IC::Controller/;
- 
+
  sub speak {
      my $self = shift;
      my $message = $self->parameters->{message} || 'arf! arf!';
@@ -98,7 +98,7 @@ of 'foo':
      $self->response->buffer( "I say to thee: $message" );
      return;
  }
- 
+
  1;
 
 In this supremely useful controller, we're not bothering with views or anything like
@@ -113,36 +113,36 @@ Let's test this fine application.
  use App::Foo;
  use IC::Controller::Test;
  use Test::More tests => 5;
- 
+
  # Tell IC::Controller::Test that we're using the "foo" controller;
  # this could also be done using the "App::Foo" package name.
  controller('foo');
- 
+
  # Issue a request to get the default response of the speak action
  request( action => 'speak' );
- 
+
  # test assertion: the status code is 200
  status_cmp_ok('=~', qr/^200\b/, 'speak action: status code 200');
- 
+
  # test assertion: the content type headder is text/plain
  header_ok('Content-Type', 'speak action: content-type correct', 'text/plain');
- 
+
  # test assertion: the content meets our expectations
  content_cmp_ok(
      'eq',
      'I say to thee: arf! arf!',
      'speak action: default content',
  );
- 
+
  # Let's issue another request with some parameters
  request( action => 'speak', parameters => { message => 'testing123' } );
- 
+
  content_cmp_ok(
      'eq',
      'I say to thee: testing123',
      'speak action: message parameter',
  );
- 
+
  # For fun, let's verify that only two headers are set.  we'll use
  # a standard Test::More assertion for this, but use the response()
  # function to get at the response object directly.
@@ -282,8 +282,8 @@ invoked successfully generated a response.  Wrapping calls to I<request()> in
 an eval { ... } may be helpful, as it invokes a hefty bit of logic within the
 framework itself, as well as the logic in the action you're testing.
 
-You can also gain access to the context passed to the render() subroutine through 
-the I<get_render_calls()> function.  It will return an array of all the calls to 
+You can also gain access to the context passed to the render() subroutine through
+the I<get_render_calls()> function.  It will return an array of all the calls to
 render().  You can reset the variable that internally stores all the calls with
 I<reset_render_calls()>.
 
@@ -370,7 +370,7 @@ rendering or new data.
 
 =item B<get_render_calls()>
 
-Returns the value of the render_calls variable as an array.  The render_calls variable will contain all of the 
+Returns the value of the render_calls variable as an array.  The render_calls variable will contain all of the
 parameters passed to render()
 
 =back
@@ -414,12 +414,12 @@ sub request {
     die "Invalid method '$method' specified.\n"
         if $method !~ /^(?:get|post|put|delete|head|options)$/i
     ;
-    
+
     $opt{headers} ||= {};
     $opt{headers}->{REQUEST_METHOD} = $method;
     $opt{session} ||= {};
     $params ||= {};
-    
+
     $controller ||= controller();
     die "No controller set for request testing.\n"
         if !$controller
@@ -429,11 +429,11 @@ sub request {
     die "No routes set for request testing.\n"
         if !$routes
     ;
-    
+
     $opt{route_handler} = $routes;
-    
+
     my $orig = _wrap_controller_subs();
-    
+
     eval {
         $opt{path} = $routes->generate_path(
             %$params,
@@ -444,9 +444,9 @@ sub request {
         response( $controller->process_request(%opt) );
     };
     die "Error preparing/executing request: $@\n" if $@;
-    
+
     _restore_controller_subs( $orig );
-    
+
     return defined(response());
 }
 
@@ -467,17 +467,17 @@ sub get_render_calls {
 sub _wrap_controller_subs {
     my $controller_package = controller();
     my %originals;
-    
+
     # Store the original render subroutine
     $originals{render} = $controller_package->can('render');
-       
+
     # define a new subroutine that also stores the parameters in @render_calls
     my $new_sub = sub {
         my $self = shift;
         push @render_calls, { @_ };
         return $originals{render}($self,@_);
     };
-    
+
     # Redefine the render subroutine
     {
         no strict 'refs';
@@ -485,7 +485,7 @@ sub _wrap_controller_subs {
         my $name = $controller_package . '::render';
         *$name = $new_sub;
     }
-    
+
     return \%originals;
 }
 
@@ -645,6 +645,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

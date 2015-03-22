@@ -65,7 +65,7 @@ for my $item (
         UNIVERSAL::can($manager, $manager_sub),
         "manager class gets $manager_sub",
     );
-    
+
     {
         my $name = "$manager\::$manager_sub";
         no strict 'refs';

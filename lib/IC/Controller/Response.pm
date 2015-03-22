@@ -32,11 +32,11 @@ headers object to manipulate the response headers.
   $response->headers->status( '200 OK' );
   $response->headers->content_type( 'text/html; charset="utf-8"' );
   $response->buffer( \$some_big_content_string );
-  
+
   # You don't have to set the buffer with a scalar reference; it will still
   # store the content as a reference internally
   $response->buffer( 'I am not a reference, but I\'ll be stored as one!' );
-  
+
   # The buffer, regardless of how it was set, always returns a scalar ref
   print ${ $response->buffer };
 
@@ -107,6 +107,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

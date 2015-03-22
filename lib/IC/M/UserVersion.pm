@@ -14,7 +14,7 @@ __PACKAGE__->meta->setup(
 
         display_label => { type => 'varchar', not_null => 1, length => 50 },
     ],
-    unique_key => [ 'display_label' ], 
+    unique_key => [ 'display_label' ],
 );
 
 __PACKAGE__->make_manager_package;
@@ -45,6 +45,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

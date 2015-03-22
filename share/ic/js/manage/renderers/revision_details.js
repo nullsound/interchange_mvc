@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -58,7 +58,7 @@ YUI.add(
                     this._actions.render(node);
                     this._buildFormTabContent(data);
                     return node;
-                }, 
+                },
 
                 _buildViewTabContent: function (data) {
                     // Y.log('tabpanel::_buildContentString');
@@ -72,11 +72,11 @@ YUI.add(
                             // skip these for now...
                             // they shouldn't even be in the 'content' property
                         }
-                        else if (Y.Lang.isArray(v) && 
-                                 Y.Lang.isObject(v[0]) && 
+                        else if (Y.Lang.isArray(v) &&
+                                 Y.Lang.isObject(v[0]) &&
                                  Y.Lang.isValue(v[0].field)) {
                             Y.each(v, function (o) {
-                                content.push('<dt>' + o.field + ': </dt>' + 
+                                content.push('<dt>' + o.field + ': </dt>' +
                                              '<dd>' + o.value + '&nbsp;</dd>');
                             });
                         }
@@ -95,7 +95,7 @@ YUI.add(
                         content.push('<table>');
                         for (i = 0; i < data.action_log.length; i += 1) {
                             row = data.action_log[i];
-                            
+
                             content.push('<tr>');
                             content.push('<td>' + row.label + '</td>');
                             content.push('<td>');
@@ -127,8 +127,8 @@ YUI.add(
                         for (i = 0; i < data.other_settings.length; i += 1) {
                             row = data.other_settings[i];
                             fields[i] = {
-                                name: row.field, 
-                                label: row.field, 
+                                name: row.field,
+                                label: row.field,
                                 value: row.value ? row.value.toString() : ''
                             };
                         }
@@ -141,7 +141,7 @@ YUI.add(
                         method : 'post',
                         fields : fields
                     });
- 
+
                     f.subscribe('success', function (args) {
                         Y.log('Form submission successful');
                     });
@@ -180,7 +180,7 @@ YUI.add(
                     // if there is a forms.edit, add an edit tab
                     if (json.forms && json.forms.edit) {
                         var form_url = '/manage/function/' +
-                            json.forms.edit.func + 
+                            json.forms.edit.func +
                             '?_mode=config&_properties_mode=edit' +
                             json.forms.edit.pk;
                         Y.io(form_url, {
@@ -266,14 +266,14 @@ YUI.add(
                     // fields = fields.concat(hidden);
 
                     var action = '/manage/function/' +
-                        data.func + 
+                        data.func +
                         '?_mode=store&_properties_mode=edit' +
                         pk_params;
                     fields.push(data.button_field);
-                    
+
                     Y.log('fields:');
                     Y.log(Y.merge(fields));
-                    
+
                     var f = new Y.IC.ManageForm({
                         action: action,
                         method: 'post',
@@ -287,7 +287,7 @@ YUI.add(
                     f.subscribe('failure', function (args) {
                         Y.log('Form submission failed');
                     });
-                    
+
                     f.render(node);
                     this._addEditableFields(data);
                 },
@@ -305,7 +305,7 @@ YUI.add(
 
                 _addEditableFields: function (data) {
                     // Y.log('default::_addEditableFields');
-                    var node, key, i, name, value, pk_fields, type, choices, 
+                    var node, key, i, name, value, pk_fields, type, choices,
                         multiple, udo, field;
                     node = this._actions.getPanel('View');
                     node.all('dd').each(function (v) {

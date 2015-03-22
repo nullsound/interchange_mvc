@@ -47,13 +47,13 @@ is(
     }
 
     sub fallback { return $fallback }
-    
+
     sub level { return $level }
 
     sub message { return $msg }
-    
+
     sub log_it { ($level, $msg) = @_; }
-    
+
     no strict 'refs';
     no warnings;
     my $name = $class . '::_fallback_log';
@@ -126,7 +126,7 @@ for my $level (0..$debug_priority) {
     ok(!fallback(), '_fallback_log() usage unaffected by fallback_quiet property');
     is(message(), uc($level) . ': with fallback quiet', 'standard logging unaffected by fallback_quiet');
     $obj->quiet_fallback(0);
-    
+
     reset_test();
     my $sub = $obj->can($level);
     $obj->$sub('my message') if $sub;

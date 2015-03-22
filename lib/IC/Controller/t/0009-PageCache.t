@@ -129,7 +129,7 @@ SKIP: {
 
     # set up our expected results from get operations.
     my ($expected1, $expected2) = map { $_->identifier() . ": $current_key" } ( $cache1, $cache2 );
-    
+
     # the base class (IC::Controller::PageCache) does not provide cache support, so this
     # should throw an exception.
     eval { $class->set_cache( parameters => $params ) };

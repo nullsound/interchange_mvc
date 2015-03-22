@@ -37,7 +37,7 @@ headers:
   # The underlying headers in the raw() attribute will match up;
   # this prints "302 moved to http://www.endpoint.com"
   print $headers->raw->{Status} . ' to ' . $headers->raw->{Location};
-  
+
   # Suppose we want to send some custom header; that's fine.  Use the raw hash.
   $headers->raw->{'X-Bogus'} = 'some_bogus_header_value';
 
@@ -48,7 +48,7 @@ use the B<headers()> method.
   # @response will get a list of header entries, each consisting of
   # "Header-Name: header-value"
   my @response = $headers->headers;
-  
+
   # while $response will get similar content, except each header separated by "\r\n"
   # rather than as a list of headers.
   my $response = $headers->headers;
@@ -303,6 +303,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

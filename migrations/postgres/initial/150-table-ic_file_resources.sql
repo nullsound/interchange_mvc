@@ -12,7 +12,7 @@
 -- GNU General Public License for more details.
 --
 -- You should have received a copy of the GNU General Public License
--- along with this program. If not, see: http://www.gnu.org/licenses/ 
+-- along with this program. If not, see: http://www.gnu.org/licenses/
 --
 BEGIN;
 SET client_min_messages='ERROR';
@@ -41,8 +41,8 @@ CREATE TRIGGER ic_file_resources_last_modified
     FOR EACH ROW
     EXECUTE PROCEDURE ic_update_last_modified();
 
-CREATE UNIQUE INDEX ic_file_resources_parent_id_lookup_value_unique 
-    ON ic_file_resources 
+CREATE UNIQUE INDEX ic_file_resources_parent_id_lookup_value_unique
+    ON ic_file_resources
     USING btree (parent_id, regexp_replace(lower((lookup_value)::text), 'W+'::text, ''::text));
 
 COPY ic_file_resources (id, date_created, created_by, last_modified, modified_by, parent_id, branch_order, lookup_value, generate_from_parent) FROM stdin;

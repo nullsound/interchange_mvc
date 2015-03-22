@@ -42,19 +42,19 @@ sub render {
         next unless $module->can('export_symbols');
         my @share;
         for my $symbol ( $module->export_symbols ) {
-                push @share, $symbol;               
+                push @share, $symbol;
         }
         $obj->share_from( $module, \@share ) if @share;
     }
-    
+
 	eval {
         $self->content( $template->fill( PACKAGE => $obj->root) );
     };
-    
+
 	die 'An error occured when rendering the view: ' . $@
 		if $@
 	;
-    
+
 	return;
 }
 
@@ -66,7 +66,7 @@ sub parse {
     # remove ths cache call until I know how to handle it -- Ethan
     # $template->cache($opt->{path});
     $template->load($path);
-    
+
     my %vars = (
         Carts => $::Carts,
         CGI_array => \%CGI::values_array,
@@ -101,7 +101,7 @@ sub parse {
     eval {
         $result = $template->fill(PACKAGE => $obj->root);
     };
-    
+
     if ($@) {
         ::logError("Template fill action failed for view '%s':\n%s", $path, $@);
         return undef;
@@ -126,7 +126,7 @@ This module provides support for ASP-style Perl within MVC Interchange's view pr
 (as implemented via B<IC::View> and B<IC::View::Base>).
 
 While Interchange Tag Language (ITL) is still available for use within MVC Interchange, ITL does not
-fit very well into an object-oriented idiom. 
+fit very well into an object-oriented idiom.
 Furthermore, ITL itself does not really allow for use of "helper modules" effectively, as the Interchange
 Safe module preparation is not fully exposed with a clean interface.  Therefore, B<IC::View::TST>
 addresses this issues directly, allowing easy use of objects and complex data structures within views,
@@ -146,8 +146,8 @@ within B<IC::View::TST>:
 
 Will attempt to render the file specified by I<$view_filename> using B<Text::ScriptTemplate>, using
 Safe-like compartmentalization to prevent variables from bleeding from one iteration to the next.
-Unlike Safe, this compartment imposes no restrictions on operations. The name/value pairs specified 
-in the I<$marshal_hash> hashref will be marshaled into the compartment, meaning that they are 
+Unlike Safe, this compartment imposes no restrictions on operations. The name/value pairs specified
+in the I<$marshal_hash> hashref will be marshaled into the compartment, meaning that they are
 available as local variables within the embedded Perl.  In addition, the routines exported by modules
 listed in the B<helper_modules()> attribute will also be imported into the Safe compartment.
 
@@ -176,6 +176,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

@@ -7,9 +7,9 @@
 #
 #     _get_change_status_struct:
 #
-#       returns a structure that is a hash of hash refs where the keys of the 
-#       outer hash represent statuses that an object is changing from, with 
-#       the keys of the inner hash being statuses that an object is changing 
+#       returns a structure that is a hash of hash refs where the keys of the
+#       outer hash represent statuses that an object is changing from, with
+#       the keys of the inner hash being statuses that an object is changing
 #       to whose value is callback subroutine to run when the transition occurs
 #
 #############################################################################
@@ -66,6 +66,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

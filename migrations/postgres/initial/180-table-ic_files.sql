@@ -12,7 +12,7 @@
 -- GNU General Public License for more details.
 --
 -- You should have received a copy of the GNU General Public License
--- along with this program. If not, see: http://www.gnu.org/licenses/ 
+-- along with this program. If not, see: http://www.gnu.org/licenses/
 --
 BEGIN;
 SET client_min_messages='ERROR';
@@ -35,10 +35,10 @@ CREATE TABLE ic_files (
 );
 
 ALTER TABLE ONLY ic_files
-    ADD CONSTRAINT fk_file_resource_id 
-    FOREIGN KEY (file_resource_id) 
-    REFERENCES ic_file_resources(id) 
-    ON UPDATE CASCADE 
+    ADD CONSTRAINT fk_file_resource_id
+    FOREIGN KEY (file_resource_id)
+    REFERENCES ic_file_resources(id)
+    ON UPDATE CASCADE
     ON DELETE CASCADE;
 
 CREATE TRIGGER ic_files_last_modified

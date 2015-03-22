@@ -101,7 +101,7 @@ sub manage_description {
 
             my $dt_e = DateTime->new( year => $date->year, month => 12, day => 31 )->subtract( years => 1);
             my $dt_s = DateTime->new( year => $date->year, month => 1, day => 1 )->subtract( years => 1);
-            
+
             return ($dt_s, $dt_e);
         },
     };
@@ -176,6 +176,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

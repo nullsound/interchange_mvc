@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -25,7 +25,7 @@ YUI.add(
 
         Editable.NAME = 'ic_manage_plugin_editable';
         Editable.NS = 'editable';
-        
+
 
         // NA!!! refactor this - it now gets only pk_settings and form_data
         Editable.ATTRS = {
@@ -84,7 +84,7 @@ YUI.add(
             host.addClass('editable');
             this._bindUI();
         }
-    }, 
+    },
 
     destructor: function () {
         // Y.log('editable::destructor');
@@ -130,9 +130,9 @@ YUI.add(
 
     _parseConfig: function () {
         // Y.log('editable::_parseConfig');
-        var pk_settings = this.get('pk_settings'), 
+        var pk_settings = this.get('pk_settings'),
             form_data = this.get('form_data'),
-            pk_fields = this.get('pk_fields'), 
+            pk_fields = this.get('pk_fields'),
             controls = this.get('controls'),
             fields_present = this.get('fields_present');
 

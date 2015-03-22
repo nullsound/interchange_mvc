@@ -14,7 +14,7 @@ use Rose::Object::MakeMethods::Generic (
         'clear_commit_callbacks' => { interface => 'clear', hash_key => 'commit_callbacks' },
         'reset_commit_callbacks' => { interface => 'reset', hash_key => 'commit_callbacks' },
         '_push_commit_callbacks' => { interface => 'push', hash_key => 'commit_callbacks' },
-    ], 
+    ],
 );
 
 IC::Config->initialize;
@@ -129,7 +129,7 @@ sub new {
     }
     else {
         return $invocant->SUPER::new( %args );
-    }  
+    }
 }
 
 sub clear_singleton {
@@ -256,6 +256,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

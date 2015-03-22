@@ -5,14 +5,14 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
-       
+
     This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program. If not, see: http://www.gnu.org/licenses/ 
+    along with this program. If not, see: http://www.gnu.org/licenses/
 */
 
 YUI.add(
@@ -130,7 +130,7 @@ YUI.add(
     bindUI: function () {
         // Y.log('quick_links::bindUI');
         this.get('layout').subscribe(
-            'resize', 
+            'resize',
             Y.bind(this._resizeAccItems, this)
         );
     },
@@ -145,7 +145,7 @@ YUI.add(
         var new_height = this._getContentHeight();
         Y.each(this._acc.get('items'), function (v) {
             v.set('contentHeight', {
-                method: 'fixed', 
+                method: 'fixed',
                 height: new_height
             });
             if (v.get('expanded')) {
@@ -219,7 +219,7 @@ YUI.add(
             var profile = Y.IC.ManageHistory.profiles[Y.IC.ManageHistory.DTDV];
             var state = {
                 _dtargs: 'Orders_orderList',
-                _lsresults: '50', _lsstartIndex: '0', _lssort: 'order_date', 
+                _lsresults: '50', _lsstartIndex: '0', _lssort: 'order_date',
                 _lsdir: 'yui-dt-desc', _lssrec: values._pk_id,
                 _dvargs: 'Orders_orderDetailView-_pk_id=' + values._pk_id,
                 _dx_otst: '0'
@@ -228,7 +228,7 @@ YUI.add(
             form1.reset();
         }, this);
 
-        // add the goto product 
+        // add the goto product
         fields = [];
         fields[0] = {
             name: 'sku',
@@ -251,12 +251,12 @@ YUI.add(
         form2_node.one('button').on('click', function (e) {
             e.stopPropagation();
             var values = form2_node.values.getValues();
-            var args = 'Products_productList-search_by[]=sku%3Dilike&sku=' + 
+            var args = 'Products_productList-search_by[]=sku%3Dilike&sku=' +
                 values.sku
             var profile = Y.IC.ManageHistory.profiles[Y.IC.ManageHistory.DTMAX];
             // still need to add the search_by[] and sku query params...
             var state = {
-                _dtargs: args, _lsresults: '50', _lsstartIndex: '0', 
+                _dtargs: args, _lsresults: '50', _lsstartIndex: '0',
                 _lssort: 'sku', _lsdir: 'yui-dt-desc'
             };
             this._loadProfile(profile, state);
@@ -304,18 +304,18 @@ YUI.add(
     _getLinksContent: function (node) {
         node.setContent('');
 
-        // first, make a button that get's the current history 
+        // first, make a button that get's the current history
         //  and stores it as a recallable link.
         var link_button = Y.Node.create(
             '<button>Link This Page</button>'
         );
         link_button.on(
-            'click', 
+            'click',
             Y.bind(this._createPageLink, this)
         );
         node.append(link_button);
 
-        // then build the list of links, 
+        // then build the list of links,
         //  (having the format [{name: 'link name', state: {...}}]
         //  each with a delete button that remove the link
         node.append(Y.Node.create('<h4>Saved Links</h4>'));
@@ -365,7 +365,7 @@ YUI.add(
     "@VERSION@",
     {
         requires: [
-            "ic-manage-widget-quicklinks-css", 
+            "ic-manage-widget-quicklinks-css",
             "ic-manage-form",
             "widget",
             "gallery-accordion-css",

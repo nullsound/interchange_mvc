@@ -46,7 +46,7 @@ cmp_ok(
 
 ok(
     ! defined $obj->generate_path( controller => 'test', ),
-    'static path: path generation undefined if no action specified',  
+    'static path: path generation undefined if no action specified',
 );
 
 $obj->defaults({ action => $obj->action });

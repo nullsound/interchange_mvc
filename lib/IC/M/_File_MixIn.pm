@@ -48,8 +48,8 @@ sub get_file {
             last;
         }
     }
-    # not finding a resource object can't throw an exception, 
-    # because it is used for alternate objects which may not have 
+    # not finding a resource object can't throw an exception,
+    # because it is used for alternate objects which may not have
     # this particular resource
     if (defined $file_resource_obj) {
         my $file = $file_resource_obj->get_file_for_object($self);
@@ -151,7 +151,7 @@ sub store_file_for_resource {
     unless ($file_resource_obj) {
         IC::Exception->throw("Can't retrieve file resource table node: " . $resource);
     }
-    
+
     my $attr = $file_resource_obj->attrs;
     my $attr_refs = [];
 
@@ -244,7 +244,7 @@ sub delete_file {
     eval {
         $db->begin_work unless $in_transaction;
 
-        unlink($file_obj->local_path) == 1 
+        unlink($file_obj->local_path) == 1
             or IC::Exception->throw('Unable to unlink ' . $file_obj->local_path)
         ;
 
@@ -282,6 +282,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut

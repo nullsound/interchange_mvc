@@ -511,7 +511,7 @@ sub assert_target_set {
     my %opt = @_;
     my $assertions = delete $opt{assertions};
     die "Nothing to test!\n" unless keys %$assertions;
-    
+
     my $test = delete $opt{test};
     my @args = (delete $opt{code});
     my $role_map = delete $opt{role_map};
@@ -524,7 +524,7 @@ sub assert_target_set {
     my $reverse_target = {
         map { $target_map->{$_}->as_hashkey => $_ } keys %$target_map
     };
-    
+
     my %results;
 
     for my $role (keys %$assertions) {
@@ -555,7 +555,7 @@ sub test_roles {
         $db = IC::Model::Rose::Object->init_db;
         $db->dbh->begin_work;
     }
-    
+
     my %role = map { $_ => $role_class->new( db => $db, code => $_, display_label => $_ )->save; } qw(
         A B C D E F
     );

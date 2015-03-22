@@ -150,7 +150,7 @@ sub property_values {
     my $as_hash = $args->{as_hash} || 0;
 
     my %check_properties = map { $_->file_resource_attr->code => $_->value } @{ $self->properties };
-    
+
     if ($self->is_image and grep { $_ eq 'width' or $_ eq 'height' } @$properties) {
         unless (defined $check_properties{width} and defined $check_properties{height}) {
             my %auto;
@@ -161,14 +161,14 @@ sub property_values {
             }
         }
     }
-    
+
     unless ($as_hash) {
         return wantarray ? @check_properties{ @$properties } : [ @check_properties{ @$properties } ];
     }
-    
+
     my %return;
     @return{ @$properties } = @check_properties{ @$properties };
-    
+
     return wantarray ? %return : \%return;
 
 }
@@ -280,6 +280,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see: http://www.gnu.org/licenses/ 
+along with this program. If not, see: http://www.gnu.org/licenses/
 
 =cut
